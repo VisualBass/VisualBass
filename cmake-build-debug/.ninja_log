@@ -1,0 +1,22 @@
+# ninja log v6
+3	347	7659762293699014	build.ninja	3b83b1bb427469a2
+23	309	7658007251928488	CMakeFiles/untitled1.dir/gravityorbs.cpp.obj	5ddf1fc65a559c8f
+13	172	7657375820611486	kissfft/CMakeFiles/kissfft.dir/kfc.c.obj	4efe045d4a923700
+21	191	7657375820690846	kissfft/CMakeFiles/kissfft.dir/kiss_fftr.c.obj	adf078f14db76e15
+16	179	7657375820636282	kissfft/CMakeFiles/kissfft.dir/kiss_fftnd.c.obj	e60b40d2fe5d10ea
+18	178	7657375820661084	kissfft/CMakeFiles/kissfft.dir/kiss_fftndr.c.obj	e72362490388aaa2
+10	208	7657375820577054	kissfft/CMakeFiles/kissfft.dir/kiss_fft.c.obj	91c16a9f8fc8b81c
+25	178	7657768414740759	kissfft/libkissfft-float.dll	37b294ca7b6b0101
+25	178	7657768414740759	kissfft/libkissfft-float.dll.a	37b294ca7b6b0101
+29	109	7657773377344947	CMakeFiles/untitled1.dir/fft.cpp.obj	d6eff6db3f7fa47
+20	1296	7659140736967967	CMakeFiles/untitled1.dir/main.cpp.obj	883921f2ad117403
+22	745	7659152047536436	untitled1.exe	53fe0415fa678f97
+36	1617	7657773377414383	CMakeFiles/untitled1.dir/networking.cpp.obj	a0a6ed27ad564d04
+25	77	7658692170258248	CMakeFiles/untitled1.dir/globals.cpp.obj	3a6a3abcf2dfbb10
+23	82	7657375138602855	CMakeFiles/orb_visualizer.dir/globals.cpp.obj	bacb275022562daa
+7	1144	7658219506983007	CMakeFiles/untitled1.dir/waveform.cpp.obj	24fc0d674df34f44
+7	290	7658758117934320	CMakeFiles/untitled1.dir/menu.cpp.obj	443ec75b89baf609
+23	433	7659107585694691	CMakeFiles/untitled1.dir/cube.cpp.obj	6785f00b6e5b056b
+14	675	7659770096536948	CMakeFiles/untitled1.dir/cube.cpp.obj	6785f00b6e5b056b
+10	1261	7659770096492310	CMakeFiles/untitled1.dir/main.cpp.obj	883921f2ad117403
+1261	2212	7659770109001888	untitled1.exe	53fe0415fa678f97
