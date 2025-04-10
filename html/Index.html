@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>My Visualizer Project</title>
+   <style>
+     html, body {
+       margin: 0;
+       padding: 0;
+       overflow: hidden;
+       font-family: sans-serif;
+       background: #000;
+     }
+     /* Fullscreen canvas behind the content */
+     #visualCanvas {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       z-index: -2;
+     }
+     /* Dim overlay to darken the background */
+     .overlay {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background: rgba(0,0,0,0.65);
+       z-index: -1;
+     }
+     /* Centered content */
+     .content {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       text-align: center;
+       color: white;
+       z-index: 1;
+     }
+     h1 {
+       font-size: 3em;
+       margin: 0.2em 0;
+     }
+     p {
+       font-size: 1.2em;
+       margin: 0.5em 0 1em;
+     }
+     .download-button {
+       display: inline-block;
+       padding: 15px 30px;
+       background: #e74c3c;
+       color: white;
+       text-decoration: none;
+       font-size: 1.2em;
+       border-radius: 5px;
+       transition: background 0.3s;
+     }
+     .download-button:hover {
+       background: #c0392b;
+     }
+   </style>
+ </head>
+ <body>
+   <canvas id="visualCanvas"></canvas>
+   <div class="overlay"></div>
+   <div class="content">
+     <h1>Visual Bass Sync/h1>
+     <p>Experience BASS real-time like neverbefore!</p>
+     <a class="download-button" href="YOUR_DOWNLOAD_URL_HERE">Download Here</a>
+   </div>
+   
+   <script>
+     // ===============================
+     // Visualizer Code (Canvas + Simulation)
+     // ===============================
+     
+     // Canvas setup
+     const canvas = document.getElementById('visualCanvas');
+     const ctx = canvas.getContext('2d');
+     function resizeCanvas() {
+       canvas.width = window.innerWidth;
+       canvas.height = window.innerHeight;
+     }
+     window.addEventListener('resize', resizeCanvas);
+     resizeCanvas();
+     
+     // Visualizer Parameters
+     const ORB_AMOUNT = 50;
+     const SHAKE_INTENSITY = 1.5;
+     const CONTROL_SENSITIVITY = 1.0;
+     
+     let hue = 0; // current hue in degrees
+     let glow_value = 0.0; // simulated bass glow (0 to 1)
+     let orbs = [];
+     
+     // Orb class definition
+     class Orb {
+       constructor(x, y, radius) {
+         this.pos = { x, y };
+         this.radius = radius;
+         this.opacity = 255;
+         this.color = 'white';
+       }
+       draw(ctx) {
+         ctx.beginPath();
+         ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
+         ctx.fillStyle = this.color;
+         ctx.globalAlpha = this.opacity / 255;
+         ctx.fill();
+         ctx.globalAlpha = 1.0;
+       }
+     }
+     
+     // Initialize orbs at random positions along the canvas edges
+     function initOrbs() {
+       orbs = [];
+       for (let i = 0; i < ORB_AMOUNT; i++) {
+         let side = ['top', 'bottom', 'left', 'right'][Math.floor(Math.random() * 4)];
+         let x, y;
+         if (side === 'top') {
+           x = Math.random() * canvas.width;
+           y = 0;
+         } else if (side === 'bottom') {
+           x = Math.random() * canvas.width;
+           y = canvas.height;
+         } else if (side === 'left') {
+           x = 0;
+           y = Math.random() * canvas.height;
+         } else {
+           x = canvas.width;
+           y = Math.random() * canvas.height;
+         }
+         orbs.push(new Orb(x, y, 5));
+       }
+     }
+     initOrbs();
+     
+     // Simulate random bass jumps:
+     let simulatedBass = 0.0;
+     let bassTarget = 0.0;
+     function updateBass() {
+       // Random chance to jump bass intensity
+       if (Math.random() < 0.02) { // about 2% chance each frame
+         bassTarget = Math.random(); // random target between 0 and 1
+       }
+       // Smooth transition toward target bass value
+       simulatedBass += (bassTarget - simulatedBass) * 0.07;
+       // Optional: if the bass intensity is very small, force it to zero
+       if (simulatedBass < 0.01) simulatedBass = 0;
+       glow_value = simulatedBass;
+     }
+     
+     // Update orbs based on simulated bass and hue
+     function updateOrbs() {
+       const centerX = canvas.width / 2;
+       const centerY = canvas.height / 2;
+       const maxDistance = Math.min(canvas.width, canvas.height) / 2;
+       let baseColor = `hsl(${hue}, 100%, 70%)`;
+       for (let orb of orbs) {
+         // Calculate directional movement toward the center with a little randomness based on glow_value
+         let dx = centerX - orb.pos.x;
+         let dy = centerY - orb.pos.y;
+         let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+         orb.pos.x += (dx / dist) * (maxDistance * (1 - glow_value)) + (Math.random() * 2 - 1) * SHAKE_INTENSITY * glow_value;
+         orb.pos.y += (dy / dist) * (maxDistance * (1 - glow_value)) + (Math.random() * 2 - 1) * SHAKE_INTENSITY * glow_value;
+         // Keep within canvas bounds
+         orb.pos.x = Math.max(orb.radius, Math.min(canvas.width - orb.radius, orb.pos.x));
+         orb.pos.y = Math.max(orb.radius, Math.min(canvas.height - orb.radius, orb.pos.y));
+         // Scale radius and opacity with glow (bass intensity)
+         orb.radius = 5 + glow_value * 15;
+         orb.opacity = 100 + glow_value * 155;
+         orb.color = baseColor;
+       }
+     }
+     
+     function drawOrbs() {
+       for (let orb of orbs) {
+         orb.draw(ctx);
+       }
+     }
+     
+     // Main animation loop
+     function animate() {
+       ctx.clearRect(0, 0, canvas.width, canvas.height);
+       updateBass();
+       updateOrbs();
+       drawOrbs();
+       
+       // Advance hue for a continuous color cycle (only if auto-cycle is desired)
+       hue += 0.5; // adjust the speed as needed
+       if (hue >= 360) hue -= 360;
+       
+       requestAnimationFrame(animate);
+     }
+     animate();
+   </script>
+ </body>
+ </html>
