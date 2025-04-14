@@ -8,7 +8,7 @@
 
 // Constant for version control
 <<<<<<< HEAD
-const char* VERSION = "0.01c";  // Update this value to change the version
+const char* VERSION = "0.01e";  // Update this value to change the version
 extern int numOrbs;
 =======
 const char* VERSION = "0.01b";  // Update this value to change the version
