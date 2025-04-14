@@ -7,12 +7,8 @@
 #define NOWINRES        // Avoid 'LoadImage'
 
 // Constant for version control
-<<<<<<< HEAD
 const char* VERSION = "0.01e";  // Update this value to change the version
 extern int numOrbs;
-=======
-const char* VERSION = "0.01b";  // Update this value to change the version
->>>>>>> e3acf683c19700d64f5c0b8033b00208fd966701
 
 #include <windows.h>     // Safe now with above defines
 #include <winsock2.h>
@@ -31,10 +27,7 @@ const char* VERSION = "0.01b";  // Update this value to change the version
 #include "globals.h" // Include the header file where globals are declared
 #include "menu.h"
 #include "cube.h"
-<<<<<<< HEAD
 #include "particle01.h"  // Include the renamed particle system
-=======
->>>>>>> e3acf683c19700d64f5c0b8033b00208fd966701
 
 // Constants
 #define SAMPLE_RATE         44100
@@ -63,19 +56,12 @@ extern float waveform_height_scale;
 extern float waveform_smoothing_factor;
 extern int control_waveform_points;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e3acf683c19700d64f5c0b8033b00208fd966701
 // Define the constants for the modes
 enum VisualizationMode {
     WAVEFORM_MODE,
     GRAVITY_MODE,
     CUBE_MODE,
-<<<<<<< HEAD
     PARTICLE_MODE_01,
-=======
->>>>>>> e3acf683c19700d64f5c0b8033b00208fd966701
 };
 
 // Audio Callback function for PortAudio
@@ -141,7 +127,6 @@ Color HSVtoRGB(float h, float s, float v) {
     return (Color){ (unsigned char)(r * 255), (unsigned char)(g * 255), (unsigned char)(b * 255), 255 };
 }
 
-<<<<<<< HEAD
 // Declare the particle system
 Particle01 particleSystem(MAX_PARTICLES);
 
@@ -159,10 +144,6 @@ void UpdateAndDrawParticles(Color orbColor) {
 
 int main() {
     // Initialize parameters (your existing variables)
-=======
-int main() {
-    // Initialize parameters
->>>>>>> e3acf683c19700d64f5c0b8033b00208fd966701
     float glow_value = 0.000f;
     float control_sensitivity = 1.0f;
     float control_brightness_floor = 0.1f;
@@ -218,11 +199,7 @@ int main() {
 
     while (!WindowShouldClose()) {
         if (IsKeyPressed(KEY_E)) {
-<<<<<<< HEAD
             currentMode = static_cast<VisualizationMode>((currentMode + 1) % 4);  // Cycle through 4 modes
-=======
-            currentMode = static_cast<VisualizationMode>((currentMode + 1) % 3);
->>>>>>> e3acf683c19700d64f5c0b8033b00208fd966701
         }
 
         if (audioDataReady) {
@@ -239,7 +216,6 @@ int main() {
             if (hueShift >= 360.0f) hueShift -= 360.0f;
         }
 
-<<<<<<< HEAD
         // Ensure hueShift is between 0 and 360
         Color orbColor = HSVtoRGB(hueShift / 360.0f, 1.0f, 1.0f);
         UpdateOrbs(visualGlow, escape_mode, orbColor);
@@ -255,24 +231,12 @@ int main() {
             particleSystem.Draw();
         }
 
-=======
-        Color orbColor = HSVtoRGB(hueShift / 360.0f, 1.0f, 1.0f);
-        UpdateOrbs(visualGlow, escape_mode, orbColor);
-        SendToPython(glow_value, hueShift);
-
-        BeginDrawing();
-        ClearBackground(BLACK);
-
->>>>>>> e3acf683c19700d64f5c0b8033b00208fd966701
         if (currentMode == WAVEFORM_MODE) {
             std::vector<float> audioVector(std::begin(gAudioBuffer), std::end(gAudioBuffer));
             waveform.drawWaveform(audioVector, orbColor);
         } else if (currentMode == GRAVITY_MODE) {
             DrawOrbs();
-<<<<<<< HEAD
 
-=======
->>>>>>> e3acf683c19700d64f5c0b8033b00208fd966701
         } else if (currentMode == CUBE_MODE) {
             Vector2 mouse = GetMousePosition();
             float screenCenterX = GetScreenWidth() / 2.0f;
@@ -294,10 +258,6 @@ int main() {
 
             for (const auto& cube : cubeField)
                 cube.Draw();
-<<<<<<< HEAD
-=======
-            for (const auto& cube : cubeField) cube.Draw();
->>>>>>> e3acf683c19700d64f5c0b8033b00208fd966701
             EndMode3D();
         }
 
@@ -308,10 +268,7 @@ int main() {
         DrawText(TextFormat("FPS: %d", GetFPS()), 10, 106, 20, GREEN);
         DrawText(currentMode == WAVEFORM_MODE ? "Current Mode: Waveform" :
                  currentMode == GRAVITY_MODE ? "Current Mode: Gravity Orbs" :
-<<<<<<< HEAD
                  currentMode == PARTICLE_MODE_01 ? "Current Mode: PARTICLE_MODE_01" :
-=======
->>>>>>> e3acf683c19700d64f5c0b8033b00208fd966701
                  "Current Mode: Cube Field", 10, 130, 20, GREEN);
 
         menu.Update();
