@@ -7,7 +7,7 @@
 #define NOWINRES        // Avoid 'LoadImage'
 
 // Constant for version control
-const char* VERSION = "0.01d";  // Update this value to change the version
+const char* VERSION = "0.01e";  // Update this value to change the version
 extern int numOrbs;
 
 #include <windows.h>     // Safe now with above defines
