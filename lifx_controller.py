@@ -13,10 +13,11 @@ UDP_PORT = 7777
 BUFFER_SIZE = 64
 QUEUE_TIMEOUT = 0.005
 
-# Manual Configuration: Add your specific lights here
+# COMPLETE CONFIGURATION (4 Lights)
 KNOWN_BULBS_CONFIG = [
-    ("d0:73:d5:86:b4:1c", "192.168.1.2"),
-    ("d0:73:d5:87:00:09", "192.168.1.7"),
+    ("d0:73:d5:86:b4:1c", "192.168.1.2"),   
+    ("d0:73:d5:87:00:09", "192.168.1.7"),   
+    ("d0:73:d5:86:fe:9a", "192.168.1.17"),  
 ]
 
 # Setup logging
