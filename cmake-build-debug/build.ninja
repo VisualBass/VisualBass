@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/cmake-build-debug/
+cmake_ninja_workdir = N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target VisualBassSync
 
@@ -56,6 +56,8 @@ build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/imgui.
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir\C_\Packages\imgui-master\imgui-master
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
 build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/imgui_draw.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug C$:/Packages/imgui-master/imgui-master/imgui_draw.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
@@ -64,6 +66,8 @@ build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/imgui_
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir\C_\Packages\imgui-master\imgui-master
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
 build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/imgui_widgets.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug C$:/Packages/imgui-master/imgui-master/imgui_widgets.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
@@ -72,6 +76,8 @@ build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/imgui_
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir\C_\Packages\imgui-master\imgui-master
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
 build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/imgui_tables.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug C$:/Packages/imgui-master/imgui-master/imgui_tables.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
@@ -80,6 +86,8 @@ build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/imgui_
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir\C_\Packages\imgui-master\imgui-master
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
 build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/imgui_demo.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug C$:/Packages/imgui-master/imgui-master/imgui_demo.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
@@ -88,6 +96,8 @@ build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/imgui_
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir\C_\Packages\imgui-master\imgui-master
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
 build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/backends/imgui_impl_opengl3.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug C$:/Packages/imgui-master/imgui-master/backends/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
@@ -96,94 +106,118 @@ build CMakeFiles/VisualBassSync.dir/C_/Packages/imgui-master/imgui-master/backen
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir\C_\Packages\imgui-master\imgui-master\backends
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/main.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/main.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/main.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/main.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\main.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/gravityorbs.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/gravityorbs.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/gravityorbs.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/gravityorbs.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\gravityorbs.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/networking.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/networking.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/networking.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/networking.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\networking.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/waveform.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/waveform.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/waveform.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/waveform.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\waveform.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/globals.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/globals.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/globals.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/globals.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\globals.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/menu.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/menu.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/menu.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/menu.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\menu.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/cube.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/cube.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/cube.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/cube.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\cube.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/particle01.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/particle01.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/particle01.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/particle01.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\particle01.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/Menu/ColorPicker.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/Menu/ColorPicker.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/Menu/ColorPicker.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/Menu/ColorPicker.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\Menu\ColorPicker.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir\Menu
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/Menu/GetColorFromHue.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/Menu/GetColorFromHue.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/Menu/GetColorFromHue.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/Menu/GetColorFromHue.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\Menu\GetColorFromHue.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir\Menu
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
-build CMakeFiles/VisualBassSync.dir/SliderControl.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/SliderControl.cpp || cmake_object_order_depends_target_VisualBassSync
+build CMakeFiles/VisualBassSync.dir/SliderControl.cpp.obj: CXX_COMPILER__VisualBassSync_unscanned_Debug N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/SliderControl.cpp || cmake_object_order_depends_target_VisualBassSync
   DEFINES = -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
   DEP_FILE = CMakeFiles\VisualBassSync.dir\SliderControl.cpp.obj.d
   FLAGS = -static-libgcc -static-libstdc++ -static -g -std=gnu++17 -fdiagnostics-color=always
   INCLUDES = -IN:/portaudio-master/portaudio/include -IC:/Packages/imgui-master/imgui-master -IC:/Packages/raylib/include -IN:/kissfft-master/kissfft-master/include -IC:/Packages/bullet3-master/bullet3-master/cmake-build-debug/src -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   OBJECT_FILE_DIR = CMakeFiles\VisualBassSync.dir
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
+  TARGET_PDB = VisualBassSync.pdb
 
 
 # =============================================================================
@@ -200,16 +234,17 @@ build VisualBassSync.exe: CXX_EXECUTABLE_LINKER__VisualBassSync_Debug CMakeFiles
   OBJECT_DIR = CMakeFiles\VisualBassSync.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
+  TARGET_COMPILE_PDB = CMakeFiles\VisualBassSync.dir\
   TARGET_FILE = VisualBassSync.exe
   TARGET_IMPLIB = libVisualBassSync.dll.a
-  TARGET_PDB = VisualBassSync.exe.dbg
+  TARGET_PDB = VisualBassSync.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -220,7 +255,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe --regenerate-during-build -S"N:\newproject\VBS 0.1e - Copy - Copy" -B"N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe --regenerate-during-build -S"N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025" -B"N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -238,7 +273,7 @@ build list_install_components: phony
 # Utility command for install
 
 build CMakeFiles/install.util: CUSTOM_COMMAND all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -250,7 +285,7 @@ build install: phony CMakeFiles/install.util
 # Utility command for install/local
 
 build CMakeFiles/install/local.util: CUSTOM_COMMAND all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -262,7 +297,7 @@ build install/local: phony CMakeFiles/install/local.util
 # Utility command for install/strip
 
 build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -271,7 +306,7 @@ build install/strip: phony CMakeFiles/install/strip.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# N:/newproject/VBS 0.1e - Copy - Copy/CMakeLists.txt
+# N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -290,6 +325,8 @@ build kissfft/CMakeFiles/kissfft.dir/kiss_fft.c.obj: C_COMPILER__kissfft_unscann
   INCLUDES = -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = kissfft\CMakeFiles\kissfft.dir
   OBJECT_FILE_DIR = kissfft\CMakeFiles\kissfft.dir
+  TARGET_COMPILE_PDB = kissfft\CMakeFiles\kissfft.dir\
+  TARGET_PDB = kissfft\libkissfft-float.pdb
 
 build kissfft/CMakeFiles/kissfft.dir/kfc.c.obj: C_COMPILER__kissfft_unscanned_Debug C$:/Packages/kissfft-master/kissfft-master/kfc.c || cmake_object_order_depends_target_kissfft
   DEFINES = -DKISS_FFT_BUILD -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
@@ -298,6 +335,8 @@ build kissfft/CMakeFiles/kissfft.dir/kfc.c.obj: C_COMPILER__kissfft_unscanned_De
   INCLUDES = -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = kissfft\CMakeFiles\kissfft.dir
   OBJECT_FILE_DIR = kissfft\CMakeFiles\kissfft.dir
+  TARGET_COMPILE_PDB = kissfft\CMakeFiles\kissfft.dir\
+  TARGET_PDB = kissfft\libkissfft-float.pdb
 
 build kissfft/CMakeFiles/kissfft.dir/kiss_fftnd.c.obj: C_COMPILER__kissfft_unscanned_Debug C$:/Packages/kissfft-master/kissfft-master/kiss_fftnd.c || cmake_object_order_depends_target_kissfft
   DEFINES = -DKISS_FFT_BUILD -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
@@ -306,6 +345,8 @@ build kissfft/CMakeFiles/kissfft.dir/kiss_fftnd.c.obj: C_COMPILER__kissfft_unsca
   INCLUDES = -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = kissfft\CMakeFiles\kissfft.dir
   OBJECT_FILE_DIR = kissfft\CMakeFiles\kissfft.dir
+  TARGET_COMPILE_PDB = kissfft\CMakeFiles\kissfft.dir\
+  TARGET_PDB = kissfft\libkissfft-float.pdb
 
 build kissfft/CMakeFiles/kissfft.dir/kiss_fftndr.c.obj: C_COMPILER__kissfft_unscanned_Debug C$:/Packages/kissfft-master/kissfft-master/kiss_fftndr.c || cmake_object_order_depends_target_kissfft
   DEFINES = -DKISS_FFT_BUILD -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
@@ -314,6 +355,8 @@ build kissfft/CMakeFiles/kissfft.dir/kiss_fftndr.c.obj: C_COMPILER__kissfft_unsc
   INCLUDES = -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = kissfft\CMakeFiles\kissfft.dir
   OBJECT_FILE_DIR = kissfft\CMakeFiles\kissfft.dir
+  TARGET_COMPILE_PDB = kissfft\CMakeFiles\kissfft.dir\
+  TARGET_PDB = kissfft\libkissfft-float.pdb
 
 build kissfft/CMakeFiles/kissfft.dir/kiss_fftr.c.obj: C_COMPILER__kissfft_unscanned_Debug C$:/Packages/kissfft-master/kissfft-master/kiss_fftr.c || cmake_object_order_depends_target_kissfft
   DEFINES = -DKISS_FFT_BUILD -DKISS_FFT_SHARED -Dkiss_fft_scalar=float
@@ -322,6 +365,8 @@ build kissfft/CMakeFiles/kissfft.dir/kiss_fftr.c.obj: C_COMPILER__kissfft_unscan
   INCLUDES = -IC:/Packages/kissfft-master/kissfft-master
   OBJECT_DIR = kissfft\CMakeFiles\kissfft.dir
   OBJECT_FILE_DIR = kissfft\CMakeFiles\kissfft.dir
+  TARGET_COMPILE_PDB = kissfft\CMakeFiles\kissfft.dir\
+  TARGET_PDB = kissfft\libkissfft-float.pdb
 
 
 # =============================================================================
@@ -338,16 +383,17 @@ build kissfft/libkissfft-float.dll kissfft/libkissfft-float.dll.a: C_SHARED_LIBR
   POST_BUILD = cd .
   PRE_LINK = cd .
   RESTAT = 1
+  TARGET_COMPILE_PDB = kissfft\CMakeFiles\kissfft.dir\
   TARGET_FILE = kissfft\libkissfft-float.dll
   TARGET_IMPLIB = kissfft\libkissfft-float.dll.a
-  TARGET_PDB = kissfft-float.dll.dbg
+  TARGET_PDB = kissfft\libkissfft-float.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
 build kissfft/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug\kissfft" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug\kissfft" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -358,7 +404,7 @@ build kissfft/edit_cache: phony kissfft/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build kissfft/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug\kissfft" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe --regenerate-during-build -S"N:\newproject\VBS 0.1e - Copy - Copy" -B"N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug\kissfft" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe --regenerate-during-build -S"N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025" -B"N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug""
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -376,7 +422,7 @@ build kissfft/list_install_components: phony
 # Utility command for install
 
 build kissfft/CMakeFiles/install.util: CUSTOM_COMMAND kissfft/all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug\kissfft" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug\kissfft" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -388,7 +434,7 @@ build kissfft/install: phony kissfft/CMakeFiles/install.util
 # Utility command for install/local
 
 build kissfft/CMakeFiles/install/local.util: CUSTOM_COMMAND kissfft/all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug\kissfft" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug\kissfft" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -400,7 +446,7 @@ build kissfft/install/local: phony kissfft/CMakeFiles/install/local.util
 # Utility command for install/strip
 
 build kissfft/CMakeFiles/install/strip.util: CUSTOM_COMMAND kissfft/all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\newproject\VBS 0.1e - Copy - Copy\cmake-build-debug\kissfft" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D "N:\Visual Bass Sync CLION PROJECT\VBS 0.3.1 12-11-2025\cmake-build-debug\kissfft" && N:\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -422,14 +468,14 @@ build libkissfft-float.dll: phony kissfft/libkissfft-float.dll
 # =============================================================================
 
 #############################################
-# Folder: N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug
+# Folder: N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug
 
 build all: phony VisualBassSync.exe kissfft/all
 
 # =============================================================================
 
 #############################################
-# Folder: N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug/kissfft
+# Folder: N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug/kissfft
 
 build kissfft/all: phony kissfft/libkissfft-float.dll
 
@@ -440,14 +486,14 @@ build kissfft/all: phony kissfft/libkissfft-float.dll
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Packages/kissfft-master/kissfft-master/CMakeLists.txt C$:/Packages/kissfft-master/kissfft-master/kissfft-config.cmake.in CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/CMakeLists.txt
+build build.ninja: RERUN_CMAKE | C$:/Packages/kissfft-master/kissfft-master/CMakeLists.txt C$:/Packages/kissfft-master/kissfft-master/kissfft-config.cmake.in CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCCompiler.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCCompilerABI.c N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystem.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Bruce-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Compaq-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/HP-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/LCC-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SDCC-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SunPro-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XL-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XLClang-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/zOS-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Determine-CXX.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/CMakeLists.txt
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Packages/kissfft-master/kissfft-master/CMakeLists.txt C$:/Packages/kissfft-master/kissfft-master/kissfft-config.cmake.in CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake N$:/newproject/VBS$ 0.1e$ -$ Copy$ -$ Copy/CMakeLists.txt: phony
+build C$:/Packages/kissfft-master/kissfft-master/CMakeLists.txt C$:/Packages/kissfft-master/kissfft-master/kissfft-config.cmake.in CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeRCCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCCompiler.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCCompilerABI.c N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeRCInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystem.cmake.in N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Bruce-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Compaq-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/HP-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/LCC-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SDCC-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SunPro-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XL-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XLClang-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/zOS-C-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Determine-CXX.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/Windows.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake N$:/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake N$:/Visual$ Bass$ Sync$ CLION$ PROJECT/VBS$ 0.3.1$ 12-11-2025/CMakeLists.txt: phony
 
 
 #############################################

@@ -38,11 +38,11 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY OPTIONAL FILES "N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug/kissfft/libkissfft-float.dll.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY OPTIONAL FILES "N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug/kissfft/libkissfft-float.dll.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE SHARED_LIBRARY FILES "N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug/kissfft/libkissfft-float.dll")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE SHARED_LIBRARY FILES "N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug/kissfft/libkissfft-float.dll")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/libkissfft-float.dll" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/libkissfft-float.dll")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -73,7 +73,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(EXISTS "$ENV{DESTDIR}/cmake/kissfft/kissfft-float-shared-targets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}/cmake/kissfft/kissfft-float-shared-targets.cmake"
-         "N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug/kissfft/CMakeFiles/Export/06e295313d83548b76a07a2fe1e3c5dd/kissfft-float-shared-targets.cmake")
+         "N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug/kissfft/CMakeFiles/Export/06e295313d83548b76a07a2fe1e3c5dd/kissfft-float-shared-targets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}/cmake/kissfft/kissfft-float-shared-targets-*.cmake")
       if(_cmake_old_config_files)
@@ -94,7 +94,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/cmake/kissfft" TYPE FILE FILES "N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug/kissfft/CMakeFiles/Export/06e295313d83548b76a07a2fe1e3c5dd/kissfft-float-shared-targets.cmake")
+  file(INSTALL DESTINATION "/cmake/kissfft" TYPE FILE FILES "N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug/kissfft/CMakeFiles/Export/06e295313d83548b76a07a2fe1e3c5dd/kissfft-float-shared-targets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
     list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
      "/cmake/kissfft/kissfft-float-shared-targets-debug.cmake")
@@ -104,7 +104,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
       message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
     endif()
-    file(INSTALL DESTINATION "/cmake/kissfft" TYPE FILE FILES "N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug/kissfft/CMakeFiles/Export/06e295313d83548b76a07a2fe1e3c5dd/kissfft-float-shared-targets-debug.cmake")
+    file(INSTALL DESTINATION "/cmake/kissfft" TYPE FILE FILES "N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug/kissfft/CMakeFiles/Export/06e295313d83548b76a07a2fe1e3c5dd/kissfft-float-shared-targets-debug.cmake")
   endif()
 endif()
 
@@ -118,8 +118,8 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   file(INSTALL DESTINATION "/cmake/kissfft" TYPE FILE FILES
-    "N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug/kissfft/kissfft-config.cmake"
-    "N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug/kissfft/kissfft-config-version.cmake"
+    "N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug/kissfft/kissfft-config.cmake"
+    "N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug/kissfft/kissfft-config-version.cmake"
     )
 endif()
 

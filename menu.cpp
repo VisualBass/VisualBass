@@ -7,9 +7,14 @@
 #include "menu/GetColorFromHue.h"
 #include "globals.h"
 
-// Bring in global variables needed for the slider
+// Bring in global variables needed
 extern int orbCount;
 extern float hueShift;
+
+// --- GLOBAL SETTINGS ---
+// Defined here for immediate use.
+// Ideally, move 'extern float brightnessFloor;' to globals.h and definition to main.cpp later.
+float brightnessFloor = 0.0f;
 
 Menu::Menu()
     : visible(false),
@@ -17,9 +22,11 @@ Menu::Menu()
       isMouseHovering(false),
       editingHue(false),
       scrollOffset(0.0f),
-      // Initialize the Generic Slider
-      // Range: 1 to 1250 (matches MAX_ORBS in main.cpp), controlling 'orbCount', label "Orbs"
-      orbSlider(1, 1250, orbCount, "Orbs", hueShift)
+      lifxConnected(false),
+      // Initialize Orb Slider (Integer Mode)
+      orbSlider(1, 1250, orbCount, "Orbs", hueShift),
+      // Initialize Brightness Slider (Float Mode: 0.0 to 1.0)
+      brightnessSlider(0.0f, 1.0f, brightnessFloor, "Floor", hueShift)
 {
     hueBuffer[0] = '\0';
 }
@@ -44,7 +51,6 @@ Vector2 Menu::GetLocalMousePos() {
     return mouse;
 }
 
-// Updated: Accepts currentMode to allow contextual settings
 float Menu::DrawMenuContent(float offsetX, float offsetY, int currentMode) {
     float startY = offsetY;
     Vector2 mousePos = GetMousePosition();
@@ -61,7 +67,6 @@ float Menu::DrawMenuContent(float offsetX, float offsetY, int currentMode) {
     offsetY += 30 + 20;
 
     Color hueFieldColor = editingHue ? LIGHTGRAY : GetColorFromHue((int)hueShift);
-
     bool hoverHue = CheckCollisionPointRec(mousePos, hueField);
 
     if (hoverHue && !editingHue) hueFieldColor = SKYBLUE;
@@ -93,19 +98,33 @@ float Menu::DrawMenuContent(float offsetX, float offsetY, int currentMode) {
     colorPicker.UpdateColorSelection(hueShift);
 
     // ==========================================
+    // BRIGHTNESS FLOOR SLIDER
+    // ==========================================
+
+    // Gap after color picker
+    offsetY += 10;
+
+    // Define the area for the slider (Width is menu width minus margins)
+    Rectangle floorRect = { offsetX + 20, offsetY, (float)(GetMenuBounds().width - 40), 20 };
+
+    // Update and Draw using the generic class
+    brightnessSlider.UpdateSlider();
+    brightnessSlider.DrawSlider(floorRect);
+
+    // Space for next section
+    offsetY += 50;
+
+    // ==========================================
     // SECTION 2: MODE-SPECIFIC SETTINGS
     // ==========================================
 
-    offsetY += 20; // Add a divider gap
+    offsetY += 10;
     DrawLine((int)offsetX + 10, (int)offsetY, (int)(offsetX + GetMenuBounds().width - 10), (int)offsetY, Fade(LIGHTGRAY, 0.5f));
     offsetY += 20;
 
-// Switch based on the active mode (Visualizer IDs from main.cpp)
-    // 0 = WAVEFORM, 1 = GRAVITY, 2 = CUBE, 3 = PARTICLE
     switch (currentMode) {
         case 0: // WAVEFORM_MODE
         {
-            // FIX: Explicitly handle 0 so it says "Waveform" instead of "Mode Settings"
             DrawText("WAVEFORM SETTINGS", (int)offsetX + 20, (int)offsetY, 20, Fade(GREEN, backgroundAlpha));
             offsetY += 30;
             DrawText("No settings for Waveform yet.", (int)offsetX + 20, (int)offsetY, 18, Fade(GRAY, backgroundAlpha));
@@ -118,7 +137,7 @@ float Menu::DrawMenuContent(float offsetX, float offsetY, int currentMode) {
             DrawText("GRAVITY SETTINGS", (int)offsetX + 20, (int)offsetY, 20, Fade(GREEN, backgroundAlpha));
             offsetY += 30;
 
-            // Orb Slider is only relevant here
+            // Only show Orb Slider here
             Rectangle sliderRect = { offsetX + 20, offsetY, (float)(GetMenuBounds().width - 40), 20 };
             orbSlider.UpdateSlider();
             orbSlider.DrawSlider(sliderRect);
@@ -137,7 +156,6 @@ float Menu::DrawMenuContent(float offsetX, float offsetY, int currentMode) {
 
         case 3: // PARTICLE_MODE_01
         {
-            // FIX: Specific name "Particle System 01"
             DrawText("PARTICLE SYSTEM 01", (int)offsetX + 20, (int)offsetY, 20, Fade(GREEN, backgroundAlpha));
             offsetY += 30;
             DrawText("No settings for Particles yet.", (int)offsetX + 20, (int)offsetY, 18, Fade(GRAY, backgroundAlpha));
@@ -145,7 +163,7 @@ float Menu::DrawMenuContent(float offsetX, float offsetY, int currentMode) {
             break;
         }
 
-        default: // Fallback for any unknown IDs
+        default:
         {
             DrawText("UNKNOWN MODE", (int)offsetX + 20, (int)offsetY, 20, Fade(RED, backgroundAlpha));
             offsetY += 30;
@@ -153,7 +171,62 @@ float Menu::DrawMenuContent(float offsetX, float offsetY, int currentMode) {
         }
     }
 
-    // Return the total height of the content
+    // ==========================================
+    // SECTION 3: SMART LIGHTS / HARDWARE
+    // ==========================================
+
+    offsetY += 20;
+    DrawLine((int)offsetX + 10, (int)offsetY, (int)(offsetX + GetMenuBounds().width - 10), (int)offsetY, Fade(LIGHTGRAY, 0.5f));
+    offsetY += 20;
+
+    DrawText("SMART LIGHTS", (int)offsetX + 20, (int)offsetY, 20, Fade(ORANGE, backgroundAlpha));
+    offsetY += 40;
+
+    // --- LIFX ROW ---
+
+    // Label
+    DrawText("LIFX Integration", (int)offsetX + 20, (int)offsetY + 5, 20, Fade(WHITE, backgroundAlpha));
+
+    // Connect Button Geometry
+    float btnWidth = 120;
+    float btnHeight = 30;
+    float btnX = (offsetX + GetMenuBounds().width) - btnWidth - 30;
+    Rectangle btnRect = { btnX, offsetY, btnWidth, btnHeight };
+
+    // Button Logic
+    bool btnHover = CheckCollisionPointRec(mousePos, btnRect);
+
+    if (btnHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        lifxConnected = !lifxConnected;
+
+        if (lifxConnected) {
+            LaunchLIFX();
+        } else {
+            StopLIFX();
+        }
+    }
+
+    // Button Visuals
+    Color btnColor;
+    const char* btnText;
+
+    if (lifxConnected) {
+        btnColor = btnHover ? DARKGREEN : GREEN;
+        btnText = "CONNECTED";
+    } else {
+        btnColor = btnHover ? GRAY : DARKGRAY;
+        btnText = "CONNECT";
+    }
+
+    DrawRectangleRounded(btnRect, 0.3f, 6, Fade(btnColor, backgroundAlpha));
+
+    int textWidth = MeasureText(btnText, 10);
+    int textX = (int)(btnRect.x + (btnRect.width - textWidth) / 2);
+    int textY = (int)(btnRect.y + (btnRect.height - 10) / 2);
+    DrawText(btnText, textX, textY, 10, WHITE);
+
+    offsetY += 50;
+
     return offsetY - startY;
 }
 
@@ -182,7 +255,6 @@ void Menu::UpdateTextInput() {
     }
 }
 
-// Updated: Accepts currentMode
 void Menu::Draw(int currentMode) {
     if (!visible && backgroundAlpha <= MIN_ALPHA + 0.01f) return;
     Rectangle bounds = GetMenuBounds();
@@ -190,7 +262,6 @@ void Menu::Draw(int currentMode) {
 
     BeginScissorMode((int)bounds.x, (int)bounds.y, (int)bounds.width, (int)bounds.height);
 
-    // Pass currentMode to the content drawer and add scrollOffset manually
     totalContentHeight = DrawMenuContent(bounds.x, bounds.y + scrollOffset, currentMode);
 
     EndScissorMode();

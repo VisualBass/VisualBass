@@ -1,4 +1,4 @@
-# Install script for directory: N:/newproject/VBS 0.1e - Copy - Copy
+# Install script for directory: N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug/kissfft/cmake_install.cmake")
+  include("N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug/kissfft/cmake_install.cmake")
 
 endif()
 
@@ -58,6 +58,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "N:/newproject/VBS 0.1e - Copy - Copy/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "N:/Visual Bass Sync CLION PROJECT/VBS 0.3.1 12-11-2025/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -4,30 +4,39 @@
 #include "raylib.h"
 #include <vector>
 
-// Particle structure to hold particle properties
 struct Particle {
     Vector3 position;
-    Vector3 velocity;  // The velocity of the particle (random direction and speed)
-    Color color;       // The color of the particle
-    float life;        // Life of the particle (used for fading)
-    float radius;      // Size of the particle
+    Vector3 velocity;
+    Color color;
+    float life;
+    float size;
+    float intensity;
 };
 
 class Particle01 {
 public:
-    Particle01(int maxParticles);  // Constructor to initialize the particle system
-    ~Particle01();                // Destructor to clean up particles
+    Particle01(int maxParticles);
+    ~Particle01();
 
-    void SpawnParticle(Vector3 position, Color color, float glowValue);  // Spawn a new particle
-    void Update(float deltaTime, float glowValue, Color orbColor);  // Update particles based on intensity and color
-    void Draw();  // Draw all particles on the screen
+    // --- NEW: CONTROL VARIABLES ---
+    // These behave like settings you can change from main.cpp
+    float minSpawn = 0.0f;
+    float maxSpawn = 10.0f;
+    float spawnMultiplier = 1.0f;     // Moved here too
+    float forceSensitivity = 1.5f;    // Moved here too
+
+    // --- SIMPLIFIED UPDATE ---
+    // We removed the 4 arguments (multiplier, sensitivity, min, max)
+    // because they are now part of the class above!
+    void Update(float deltaTime, float glowValue, Color orbColor);
+
+    void Draw();
 
 private:
     int maxParticles;
-    std::vector<Particle> particles;  // Container to hold particles
+    std::vector<Particle> particles;
 
-    // Respawn a particle at a new random position and with random velocity
-    void RespawnParticle(Particle* particle);
+    void Spawn3DParticle(Color color, float glowValue);
 };
 
 #endif

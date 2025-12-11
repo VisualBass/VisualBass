@@ -6,30 +6,38 @@
 
 class SliderControl {
 public:
-    // Constructor for int reference (e.g., numOrbs)
-    SliderControl(int minValue, int maxValue, int& value, const char* label, float& hueShift);
+    // --- CONSTRUCTORS ---
 
-    // Draws the slider; stores the drawn area so input matches visuals
+    // 1. Existing Integer Constructor (For Orbs)
+    SliderControl(int min, int max, int& var, const char* text, float& hue);
+
+    // 2. NEW Float Constructor (For Brightness)
+    SliderControl(float min, float max, float& var, const char* text, float& hue);
+
+    // --- METHODS ---
     void DrawSlider(Rectangle startArea);
-
-    // Updates the slider value (mouse wheel over the slider = +/-5% steps; click on track sets value)
     void UpdateSlider();
-
-    // Optional: change the wheel step percent (default 0.05f = 5%)
     void SetStepPercent(float pct) { stepPercent = (pct <= 0.f) ? 0.05f : pct; }
-
-    // Method to invert color (for hover effect)
     static Color InvertColor(Color color);
 
 private:
-    int minValue;          // Minimum value of the slider
-    int maxValue;          // Maximum value of the slider
-    int& value;            // Reference to the value that the slider controls
-    const char* label;     // Label to be displayed on the slider
-    float& hueShift;       // Reference to hueShift value
+    // We use an Enum to know which mode we are in
+    enum SliderType { INT_MODE, FLOAT_MODE };
+    SliderType type;
 
-    Rectangle sliderArea{}; // The actual area used by the last DrawSlider call
-    float stepPercent = 0.05f; // Mouse wheel step as a fraction of range (5% by default)
+    // Pointers to the external variables (Only one of these will be used at a time)
+    int* intValPtr = nullptr;
+    float* floatValPtr = nullptr;
+
+    // Limits
+    int minInt, maxInt;
+    float minFloat, maxFloat;
+
+    // Common data
+    const char* label;
+    float& hueShiftRef;
+    Rectangle sliderArea{};
+    float stepPercent = 0.05f;
 };
 
 #endif // SLIDERCONTROL_H

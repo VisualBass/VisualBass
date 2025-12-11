@@ -26,12 +26,12 @@
 
 // ------------------------------------------------------------------
 
-const char* VERSION = "Development Build 0.5.1";  // Update this to bump the version
+const char* VERSION = "Development 0.3.1";
 extern int numOrbs;
 
-#include <windows.h>     // Safe now with above defines
+#include <windows.h>
 #include <winsock2.h>
-#include <ws2tcpip.h>    // (optional, but future-safe)
+#include <ws2tcpip.h>
 #include "raylib.h"
 #include "raymath.h"
 #include <portaudio.h>
@@ -43,20 +43,11 @@ extern int numOrbs;
 #include "Waveform.h"
 #include "networking.h"
 #include <vector>
-#include "globals.h"     // Ensure these globals are declared there:
-#include "imgui.h"               //   float glow_value;
-                         //   float hue_value;
-                         //   int orbCount;
-                         //   bool escape_mode;
-                         //   float hueShift;
-                         //   float control_sensitivity;
-                         //   float control_brightness_floor;
-                         //   float waveform_height_scale;
-                         //   float waveform_smoothing_factor;
-                         //   int control_waveform_points;
+#include "globals.h"
+#include "imgui.h"
 #include "menu.h"
 #include "cube.h"
-#include "particle01.h"  // Include the renamed particle system
+#include "particle01.h"
 
 // Standard constants
 #define SAMPLE_RATE         44100
@@ -92,8 +83,7 @@ static int MyAudioCallback(const void *inputBuffer, void *outputBuffer,
     return paContinue;
 }
 
-// ProcessFFT: averages magnitudes between BASS_LOW_FREQ and BASS_HIGH_FREQ, normalizes,
-// applies an exponent, and returns a value in [0,1].
+// ProcessFFT
 float ProcessFFT() {
     kiss_fft_cfg cfg = kiss_fft_alloc(FFT_SIZE, 0, NULL, NULL);
     if (!cfg) return 0.0f;
@@ -133,7 +123,7 @@ float ProcessFFT() {
     return boostedBass;
 }
 
-// Convert HSV to RGB (h in [0..1], s in [0..1], v in [0..1])
+// Convert HSV to RGB
 Color HSVtoRGB(float h, float s, float v) {
     float r, g, b;
     int i = (int)(h * 6.0f);
@@ -153,28 +143,13 @@ Color HSVtoRGB(float h, float s, float v) {
     return (Color){ (unsigned char)(r * 255), (unsigned char)(g * 255), (unsigned char)(b * 255), 255 };
 }
 
+// Instantiate Particle System
 Particle01 particleSystem(MAX_PARTICLES);
-
-void UpdateAndDrawParticles(Color orbColor) {
-    float deltaTime = GetFrameTime();
-    float glowValue = glow_value * 200.0f;  // Example: scale small glow_value into a spawn intensity
-
-    // Spawn a new particle at a random screen position
-    particleSystem.SpawnParticle(
-        (Vector3){ (float)GetRandomValue(0, GetScreenWidth()), (float)GetRandomValue(0, GetScreenHeight()), 0.0f },
-        WHITE, glowValue
-    );
-
-    // Update & draw the particle system
-    particleSystem.Update(deltaTime, glow_value, orbColor);
-    particleSystem.Draw();
-}
 
 int main() {
     // Initialize parameters
     float glow_value             = 0.0f;
     float control_sensitivity    = 1.0f;
-    float control_brightness_floor = 0.1f;
     float hue_value              = 0.0f;
     int   control_waveform_points   = 128;
     float waveform_smoothing_factor = 0.5f;
@@ -184,7 +159,7 @@ int main() {
         control_waveform_points,
         waveform_smoothing_factor,
         waveform_height_scale,
-        control_brightness_floor,
+        brightnessFloor,
         glow_value,
         control_sensitivity,
         hue_value
@@ -200,7 +175,7 @@ int main() {
     InitWindow(800, 600, "Orb Visualizer");
     SetTargetFPS(240);
 
-    // Camera setup for CUBE_MODE
+    // Camera setup for CUBE_MODE & PARTICLE_MODE
     Camera3D camera = { 0 };
     camera.position   = { 10.0f, 10.0f, 10.0f };
     camera.target     = { 0.0f,  0.0f,  0.0f  };
@@ -249,11 +224,11 @@ int main() {
         if (audioDataReady) {
             audioDataReady = 0;
             float boostedBass = ProcessFFT();
-
-            // Apply smoothing/mix: glow = glow*(1-GLOW_MIX) + boostedBass*GLOW_MIX
             glow_value = glow_value * (1.0f - GLOW_MIX) + boostedBass * GLOW_MIX;
         }
 
+        // --- MATH FIX: APPLY BRIGHTNESS FLOOR ---
+        float finalBrightness = brightnessFloor + (glow_value * (1.0f - brightnessFloor));
         float visualGlow = fminf(powf(glow_value, 1.0f), 1.0f);
 
         if (autoCycleHue) {
@@ -264,18 +239,36 @@ int main() {
         // Convert hueShift to RGB color
         Color orbColor = HSVtoRGB(hueShift / 360.0f, 1.0f, 1.0f);
         UpdateOrbs(visualGlow, escape_mode, orbColor);
-        SendToPython(glow_value, hueShift / 360.0f);
+
+        // SEND THE FLOOR-ADJUSTED VALUE TO PYTHON
+        SendToPython(finalBrightness, hueShift / 360.0f);
 
         BeginDrawing();
         ClearBackground(BLACK);
 
-        // DRAW CURRENT MODE
         if (currentMode == PARTICLE_MODE_01) {
-            UpdateAndDrawParticles(orbColor);
-        }
+            // Re-using Camera logic from CUBE mode
+            Vector2 mouse     = GetMousePosition();
+            float screenCX    = GetScreenWidth() / 2.0f;
+            float screenCY    = GetScreenHeight() / 2.0f;
+            float offsetX     = (mouse.x - screenCX) / screenCX;
+            float offsetY     = (mouse.y - screenCY) / screenCY;
 
-        if (currentMode == WAVEFORM_MODE) {
-            // Pass a copy of the audio buffer to waveform
+            float cameraRange = 20.0f;
+            float strength    = 5.0f;
+
+            camera.position.x = sinf(GetTime()) * cameraRange + offsetX * strength;
+            camera.position.y = 10.0f + offsetY * strength;
+            camera.position.z = cosf(GetTime()) * cameraRange;
+            camera.target     = { 0.0f, 0.0f, 0.0f };
+
+            BeginMode3D(camera);
+            particleSystem.Update(GetFrameTime(), visualGlow, orbColor);
+
+                particleSystem.Draw();
+            EndMode3D();
+        }
+        else if (currentMode == WAVEFORM_MODE) {
             std::vector<float> audioVector(std::begin(gAudioBuffer), std::end(gAudioBuffer));
             waveform.drawWaveform(audioVector, orbColor);
 
@@ -283,6 +276,7 @@ int main() {
             DrawOrbs();
 
         } else if (currentMode == CUBE_MODE) {
+            // Camera movement logic...
             Vector2 mouse     = GetMousePosition();
             float screenCX    = GetScreenWidth() / 2.0f;
             float screenCY    = GetScreenHeight() / 2.0f;
@@ -308,9 +302,9 @@ int main() {
         DrawText(TextFormat("HueShift: %.2f", hueShift), 10, 10, 20, WHITE);
         DrawText(TextFormat("Build: %s", VERSION), 10, 34, 14, GREEN);
         DrawText(TextFormat("Orb Count: %d", orbCount), 10, 58, 20, GREEN);
-        DrawText(TextFormat("Glow Value: %.3f", glow_value), 10, 82, 20, GREEN);
-        DrawText(TextFormat("FPS: %d", GetFPS()), 10, 106, 20, GREEN);
-        // Instead of that long if/else block:
+        DrawText(TextFormat("Audio Glow: %.3f", glow_value), 10, 82, 20, GREEN);
+        DrawText(TextFormat("Light Output: %.3f", finalBrightness), 10, 106, 20, ORANGE);
+
         DrawText(TextFormat("Current Mode: %s", MODE_NAMES[currentMode]), 10, 130, 20, GREEN);
 
         menu.Update();

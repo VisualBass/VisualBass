@@ -5,7 +5,7 @@
 #include "globals.h"
 #include <cstdio>
 #include "menu/ColorPicker.h"
-#include "SliderControl.h" // Ensure this points to your generic slider header
+#include "SliderControl.h"
 
 class Menu {
 public:
@@ -15,12 +15,12 @@ public:
     Rectangle GetMenuBounds();
     Vector2 GetLocalMousePos();
 
-    // Updated: Now accepts the mode to decide what to draw
+    // Draws the content and returns the total height
     float DrawMenuContent(float offsetX, float offsetY, int currentMode);
 
     void UpdateTextInput();
 
-    // Updated: Now accepts the mode
+    // Main draw function that sets up scissor mode and scrolling
     void Draw(int currentMode);
 
     void Update();
@@ -32,8 +32,13 @@ private:
 
     ColorPicker colorPicker;
 
+    // --- SLIDERS ---
     // Generic Slider Control
     SliderControl orbSlider;
+    SliderControl brightnessSlider; // <--- ADD THIS LINE
+
+    // Smart Home State
+    bool lifxConnected;
 
     // For manual hue input:
     bool editingHue;
