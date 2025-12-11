@@ -2,29 +2,29 @@
 #define ORBCONTROL_H
 
 #include "raylib.h"
-#include "../globals.h"
+#include "./globals.h"   // must declare: extern Orb* orbs; extern int orbCount; extern float hueShift;
 #include <cstdio>
 
-// OrbControl class to manage orb slider and logic
 class OrbControl {
 public:
-    // Constructor initializes minOrbs, maxOrbs, and numOrbs
+    // Build with the allowed range
     OrbControl(int min, int max);
 
-    // Method to draw the orb slider
+    // Draw at startArea.x, startArea.y. If width/height are zero, defaults are used.
     void DrawOrbSlider(Rectangle startArea);
 
-    // Method to update orb count based on the slider interaction
+    // Update orbCount from mouse (wheel = +/-5% per notch, left drag sets position)
     void UpdateOrbSlider();
 
-private:
-    int numOrbs;  // Current number of orbs
-    int minOrbs;  // Minimum number of orbs
-    int maxOrbs;  // Maximum number of orbs
+    // Optional: change the wheel step percent (default 0.05 = 5%)
+    void SetStepPercent(float pct) { stepPercent = (pct <= 0.f) ? 0.05f : pct; }
 
-    // Dragging-related variables
-    bool dragging;  // Flag for tracking mouse dragging state
-    float dragStartX;  // To store the starting mouse X position during a drag
+private:
+    int  minOrbs;
+    int  maxOrbs;
+
+    Rectangle sliderArea{};   // last drawn area for hit-testing
+    float     stepPercent = 0.05f; // 5% per wheel notch
 };
 
 #endif // ORBCONTROL_H

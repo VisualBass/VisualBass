@@ -13,6 +13,7 @@ extern float glow_value;
 extern bool escape_mode;
 extern float hueShift;
 extern bool autoCycleHue;
+extern const char* MODE_NAMES[]; // Declare a global list of names
 
 extern int numOrbs;  // Declare it globally, so you can use it throughout the program
 

@@ -1,0 +1,119 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"C:/Packages/kissfft-master/kissfft-master/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 293,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 298,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 309,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 316,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"kissfft/libkissfft-float.dll.a"
+			],
+			"targetId" : "kissfft::@4ab4a283321f29e5cdd3",
+			"targetIndex" : 1,
+			"targetIsImportLibrary" : true,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "bin",
+			"paths" : 
+			[
+				"kissfft/libkissfft-float.dll"
+			],
+			"targetId" : "kissfft::@4ab4a283321f29e5cdd3",
+			"targetIndex" : 1,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "/kissfft",
+			"paths" : 
+			[
+				"C:/Packages/kissfft-master/kissfft-master/kiss_fft.h",
+				"C:/Packages/kissfft-master/kissfft-master/kissfft.hh",
+				"C:/Packages/kissfft-master/kissfft-master/kiss_fftnd.h",
+				"C:/Packages/kissfft-master/kissfft-master/kiss_fftndr.h",
+				"C:/Packages/kissfft-master/kissfft-master/kiss_fftr.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "/cmake/kissfft",
+			"exportName" : "kissfft",
+			"exportTargets" : 
+			[
+				{
+					"id" : "kissfft::@4ab4a283321f29e5cdd3",
+					"index" : 1
+				}
+			],
+			"paths" : 
+			[
+				"kissfft/CMakeFiles/Export/06e295313d83548b76a07a2fe1e3c5dd/kissfft-float-shared-targets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "/cmake/kissfft",
+			"paths" : 
+			[
+				"cmake-build-debug/kissfft/kissfft-config.cmake",
+				"cmake-build-debug/kissfft/kissfft-config-version.cmake"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "kissfft",
+		"source" : "C:/Packages/kissfft-master/kissfft-master"
+	}
+}

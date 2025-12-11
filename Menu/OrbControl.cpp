@@ -1,60 +1,81 @@
 #include "OrbControl.h"
 #include "raylib.h"
-#include <cstdio>
-#include "SliderControl.h"
-#include "../globals.h"
+#include <cmath>
 #include "GetColorFromHue.h"
 
-// Constructor initializes the number of orbs
-OrbControl::OrbControl(int min, int max) {
-    numOrbs = 10;
-    minOrbs = min;
-    maxOrbs = max;
+// Globals expected in globals.h:
+// extern Orb* orbs;
+// extern int orbCount;
+// extern float hueShift;
+
+OrbControl::OrbControl(int min, int max)
+: minOrbs(min), maxOrbs(max) {
+    // Clamp any existing orbCount into range at startup
+    if (orbCount < minOrbs) orbCount = minOrbs;
+    if (orbCount > maxOrbs) orbCount = maxOrbs;
 }
 
 void OrbControl::DrawOrbSlider(Rectangle startArea) {
-    const int sliderWidth = 400;
-    const int sliderHeight = 20;
+    // Default size if caller passes 0
+    const float sliderWidth  = (startArea.width  > 0.f) ? startArea.width  : 400.f;
+    const float sliderHeight = (startArea.height > 0.f) ? startArea.height : 20.f;
 
-    // 1. Draw the background for the slider (gray box)
-    DrawRectangle(startArea.x, startArea.y, sliderWidth, sliderHeight, DARKGRAY);
+    sliderArea = { startArea.x, startArea.y, sliderWidth, sliderHeight };
 
-    // 2. Calculate the width of the progress box based on the current value (numOrbs)
-    float progressWidth = (numOrbs - minOrbs) * (sliderWidth / (float)(maxOrbs - minOrbs));
-    int progressWidthInt = (int)progressWidth;
+    // Background
+    DrawRectangle((int)sliderArea.x, (int)sliderArea.y,
+                  (int)sliderArea.width, (int)sliderArea.height, DARKGRAY);
 
-    // 3. Draw the progress box (colored box that reflects the current value, overlaps the gray box)
-    Rectangle progressBox = { startArea.x, startArea.y, (float)progressWidthInt, sliderHeight };
-    Color progressColor = GetColorFromHue((int)hueShift);  // Use hueShift to color the progress box
+    // Progress width from orbCount
+    const float range = (float)(maxOrbs - minOrbs);
+    const float t = (range > 0.f) ? ((float)(orbCount - minOrbs) / range) : 0.f;
+    float progressWidth = t * sliderArea.width;
+
+    // Progress fill
+    Rectangle progressBox = { sliderArea.x, sliderArea.y, progressWidth, sliderArea.height };
+    Color progressColor = GetColorFromHue((int)hueShift);
     DrawRectangleRec(progressBox, progressColor);
 
-    // 4. Draw the thin white line at the current position (replacing the handle)
-    int handleX = (int)(startArea.x + progressWidth - 1);  // Position the line at the current progress
-    DrawLine(handleX, (int)(startArea.y), handleX, (int)(startArea.y + sliderHeight), WHITE);  // Draw a 1px white line
+    // Handle line
+    float handleXf = sliderArea.x + progressWidth;
+    if (handleXf < sliderArea.x) handleXf = sliderArea.x;
+    if (handleXf > sliderArea.x + sliderArea.width - 1.f) handleXf = sliderArea.x + sliderArea.width - 1.f;
+    int handleX = (int)std::round(handleXf);
+    DrawLine(handleX, (int)sliderArea.y, handleX, (int)(sliderArea.y + sliderArea.height), WHITE);
 
-    // Display the value (Orbs) on the right of the progress bar
+    // Label to the right
     char text[32];
-    sprintf(text, "Orbs: %d", numOrbs);
-    DrawText(text, (int)(startArea.x + sliderWidth + 20), (int)(startArea.y - 10), 20, WHITE);
+    std::snprintf(text, sizeof(text), "Orbs: %d", orbCount);
+    DrawText(text, (int)(sliderArea.x + sliderArea.width + 20.f), (int)(sliderArea.y - 10.f), 20, WHITE);
 }
 
 void OrbControl::UpdateOrbSlider() {
     Vector2 mousePos = GetMousePosition();
+    bool over = CheckCollisionPointRec(mousePos, sliderArea);
 
-    // Check if mouse is over the slider and update numOrbs based on the mouse position
-    if (CheckCollisionPointRec(mousePos, (Rectangle){100, 100, 400, 40}) && IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
-        numOrbs = (int)((((mousePos.x - 100) / 400.0f) * (maxOrbs - minOrbs)) + minOrbs);
-        // Ensure numOrbs stays within the bounds
-        if (numOrbs < minOrbs) numOrbs = minOrbs;
-        if (numOrbs > maxOrbs) numOrbs = maxOrbs;
+    // Mouse wheel: +/- 5% of range per notch when hovering slider
+    float wheel = GetMouseWheelMove();
+    if (over && wheel != 0.0f) {
+        float raw = (float)(maxOrbs - minOrbs) * stepPercent * wheel;
+        int delta = (int)std::round(raw);
+        if (delta == 0) delta = (wheel > 0.f) ? 1 : -1;  // always move at least 1
+
+        orbCount += delta;
+        if (orbCount < minOrbs) orbCount = minOrbs;
+        if (orbCount > maxOrbs) orbCount = maxOrbs;
     }
 
-    // Support for scrolling to adjust the number of orbs
-    if (IsMouseButtonPressed(MOUSE_MIDDLE_BUTTON)) {
-        numOrbs += 1;
-        if (numOrbs > maxOrbs) numOrbs = maxOrbs;
-        if (numOrbs < minOrbs) numOrbs = minOrbs;
+    // Click-drag maps mouse X to value
+    if (IsMouseButtonDown(MOUSE_LEFT_BUTTON) && over && sliderArea.width > 0.f) {
+        float t = (mousePos.x - sliderArea.x) / sliderArea.width;
+        if (t < 0.f) t = 0.f;
+        if (t > 1.f) t = 1.f;
+        orbCount = minOrbs + (int)std::round(t * (float)(maxOrbs - minOrbs));
+        if (orbCount < minOrbs) orbCount = minOrbs;
+        if (orbCount > maxOrbs) orbCount = maxOrbs;
     }
+
+    // Note: this adjusts orbCount only.
+    // If your render/update code does not already recreate `orbs` when orbCount changes,
+    // tell me and I will add a safe resize helper that reallocates the global `orbs` array.
 }
-
-

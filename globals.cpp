@@ -8,10 +8,17 @@ float glow_value = 0.0f;
 bool escape_mode = false;
 float hueShift = 0.0f;
 bool autoCycleHue = true;  // true by default; user can disable it via the menu.
-int numOrbs = 400;  // Default number of orbs
+int numOrbs = 4000;  // Default number of orbs
 
 // Define orbColor globally, initialized to a default color (e.g., white)
 Color orbColor = WHITE;
 
 // Define MAX_PARTICLES as a constant integer, not an array
 const int MAX_PARTICLES = PARTICLES;  // Set MAX_PARTICLES to 3000
+
+const char* MODE_NAMES[] = {
+    "Waveform",
+    "Gravity Orbs",
+    "Cube Field",
+    "Particle System"
+};
