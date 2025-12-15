@@ -7,6 +7,9 @@
 #include "menu/ColorPicker.h"
 #include "SliderControl.h"
 
+// Include the new Debug Menu
+#include "menu/Debug.h"
+
 class Menu {
 public:
     Menu();
@@ -15,14 +18,11 @@ public:
     Rectangle GetMenuBounds();
     Vector2 GetLocalMousePos();
 
-    // Draws the content and returns the total height
-    float DrawMenuContent(float offsetX, float offsetY, int currentMode);
+    // UPDATED: Now takes the visible area for passing to sliders
+    float DrawMenuContent(float offsetX, float offsetY, Rectangle visibleArea, int currentMode, float uiScale);
 
     void UpdateTextInput();
-
-    // Main draw function that sets up scissor mode and scrolling
     void Draw(int currentMode);
-
     void Update();
 
 private:
@@ -32,19 +32,24 @@ private:
 
     ColorPicker colorPicker;
 
-    // --- SLIDERS ---
-    // Generic Slider Control
+    // Sliders
     SliderControl orbSlider;
-    SliderControl brightnessSlider; // <--- ADD THIS LINE
+    SliderControl brightnessSlider;
+    SliderControl gravitySlider;
+    SliderControl sizeSlider;
+    SliderControl repelSlider;
 
-    // Smart Home State
+    // NEW: Hue Speed Slider
+    // FIX: Removed 'float hueSpeed;' member variable so it uses the global one!
+    SliderControl hueSpeedSlider;
+
+    // Debug Section
+    DebugMenu debugMenu;
+
     bool lifxConnected;
-
-    // For manual hue input:
     bool editingHue;
     char hueBuffer[16];
 
-    // For scrolling:
     float scrollOffset;
     float totalContentHeight;
 

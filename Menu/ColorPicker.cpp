@@ -1,66 +1,79 @@
 #include "ColorPicker.h"
 #include "../globals.h"
-#include <cstdio>  // Include for sprintf
-#include "GetColorFromHue.h"  // Include the header where GetColorFromHue is defined
+#include <cstdio>
+#include "GetColorFromHue.h"
+#include <cmath> // for ceil
 
-// Constructor: Initialize hue options
 ColorPicker::ColorPicker() {
     for (int i = 0; i < NUM_COLOR_OPTIONS; i++) {
-        hueOptions[i] = i * 15;  // Generate hues from 0 to 360
+        hueOptions[i] = i * 15;
     }
-    selectedHue = -1.0f; // Default selected hue
+    selectedHue = -1.0f;
     isSelectingColor = false;
 }
 
-void ColorPicker::DrawColorPicker(Rectangle startArea, float& hueShift) {
-    const int columns = 8;
-    const int boxSize = 30;
-    const int spacing = 10;
+// UPDATED: Now uses scale to resize the boxes and grid
+int ColorPicker::DrawColorPicker(Rectangle startArea, float& hueShift, float scale) {
 
+    const int boxSize = (int)(30 * scale);
+    const int spacing = (int)(10 * scale);
+    const int fontSize = (int)(10 * scale);
+    const int maxColumns = 8;
+
+    // 1. Calculate Columns based on available width
+    int itemWidth = boxSize + spacing;
+    int availableWidth = (int)startArea.width;
+
+    // Ensure at least 1 column
+    int columns = (availableWidth + spacing) / itemWidth;
+    if (columns > maxColumns) columns = maxColumns;
+    if (columns < 1) columns = 1;
+
+    // 2. Draw the Grid
     for (int i = 0; i < NUM_COLOR_OPTIONS; i++) {
         int row = i / columns;
         int col = i % columns;
+
         Rectangle colorBox = {
             startArea.x + col * (boxSize + spacing),
             startArea.y + row * (boxSize + spacing),
             (float)boxSize,
             (float)boxSize
         };
+
         int optionHue = hueOptions[i];
-        Color displayColor = GetColorFromHue(optionHue);  // Get the color for the selected hue
+        Color displayColor = GetColorFromHue(optionHue);
         DrawRectangleRec(colorBox, displayColor);
 
         char label[8];
-        sprintf(label, "%d", optionHue);  // Format the hue as a string
-        DrawText(label, (int)(colorBox.x + 2), (int)(colorBox.y + 7), 10, WHITE);
+        sprintf(label, "%d", optionHue);
+        // Scaled offsets
+        DrawText(label, (int)(colorBox.x + 2 * scale), (int)(colorBox.y + 7 * scale), fontSize, WHITE);
 
-        // Only update hueShift on mouse click (not hover)
         if (CheckCollisionPointRec(GetMousePosition(), colorBox)) {
-            DrawRectangleLinesEx(colorBox, 2, WHITE);  // Highlight the hovered color box
+            DrawRectangleLinesEx(colorBox, 2 * scale, WHITE);
 
-            // Check for mouse click and update hueShift
             if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-                // If the selected color is 0, toggle autoCycleHue
                 if (optionHue == 0) {
-                    if (autoCycleHue) {
-                        autoCycleHue = false;  // Stop cycling if it was already on
-                    } else {
-                        autoCycleHue = true;   // Start cycling from the current color
-                    }
+                    autoCycleHue = !autoCycleHue;
                 } else {
-                    // For any other color, stop cycling and set the hueShift
-                    autoCycleHue = false;  // Stop cycling when a non-zero color is selected
-                    hueShift = (float)optionHue;  // Set hueShift to the selected color's hue
+                    autoCycleHue = false;
+                    hueShift = (float)optionHue;
                 }
             }
         }
     }
+
+    // 3. Calculate and Return Total Height
+    // Total rows needed = Total Options / Columns (rounded up)
+    int rows = (NUM_COLOR_OPTIONS + columns - 1) / columns;
+    int totalHeight = rows * (boxSize + spacing);
+
+    return totalHeight;
 }
-
-
 
 void ColorPicker::UpdateColorSelection(float& hueShift) {
     if (selectedHue != -1.0f) {
-        hueShift = selectedHue;  // Update hueShift based on the selected hue
+        hueShift = selectedHue;
     }
 }

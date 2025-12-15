@@ -2,9 +2,7 @@
 #define GLOBALS_H
 
 #include "Particle01.h"
-#include "raylib.h" // Required for Color struct
-
-// NOTE: We do NOT include <windows.h> here to avoid conflicts with Raylib.
+#include "raylib.h"
 
 // Define FRAMES_PER_BUFFER
 #define FRAMES_PER_BUFFER 2048
@@ -20,11 +18,12 @@ extern bool escape_mode;
 extern float hueShift;
 extern bool autoCycleHue;
 extern int numOrbs;
-extern Color orbColor; // Global Color Picker value
+extern Color orbColor;
 
-// --- LIFX SETTINGS ---
-// Controlled by UI, used by networking.cpp
-extern float brightnessFloor;
+// --- SHARED SETTINGS ---
+// Moved here so Main and Menu share the EXACT same variables
+extern float hueSpeed;         // Controls the speed of the rainbow cycle
+extern float brightnessFloor;  // Controls minimum brightness
 
 // Declare MAX_PARTICLES as a constant integer
 extern const int MAX_PARTICLES;
@@ -33,12 +32,11 @@ extern const int MAX_PARTICLES;
 extern Particle01 particleSystem;
 
 // --- LIFX / External Process Control ---
-// FIX: Use 'void*' instead of 'HANDLE' to avoid heavy Windows headers here
 extern void* hLifxProcess;
 
 void LaunchLIFX();
 void StopLIFX();
-void UpdateLIFX(float glowValue, float hueValue); // Sends data to Python
+void UpdateLIFX(float glowValue, float hueValue);
 
 // Global Mode Names for UI
 extern const char* MODE_NAMES[];

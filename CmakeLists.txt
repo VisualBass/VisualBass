@@ -70,6 +70,16 @@ add_executable(VisualBassSync
         Menu/GetColorFromHue.h
         SliderControl.cpp
         SliderControl.h
+        Menu/debug.cpp
+        Menu/debug.h
+        IdleGame/IdleGame.cpp
+        IdleGame/IdleGame.h
+        Menu/IdleGameMenu/IdleGameMenu.cpp
+        Menu/IdleGameMenu/IdleGameMenu.h
+        IdleGame/IdleGame.cpp
+        Menu/IdleGameMenu/IdleGameMenu.cpp
+        ToggleControl.cpp
+        ToggleControl.h
 )
 
 # Link libraries to your executable

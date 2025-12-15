@@ -2,42 +2,42 @@
 #define SLIDERCONTROL_H
 
 #include "raylib.h"
-#include <string>
 
 class SliderControl {
 public:
-    // --- CONSTRUCTORS ---
+    // Constructor (Int)
+    SliderControl(int min, int max, int& targetValue, int defaultValue, const char* labelText, float& globalHue);
 
-    // 1. Existing Integer Constructor (For Orbs)
-    SliderControl(int min, int max, int& var, const char* text, float& hue);
+    // Constructor (Float)
+    SliderControl(float min, float max, float& targetValue, float defaultValue, const char* labelText, float& globalHue);
 
-    // 2. NEW Float Constructor (For Brightness)
-    SliderControl(float min, float max, float& var, const char* text, float& hue);
-
-    // --- METHODS ---
-    void DrawSlider(Rectangle startArea);
     void UpdateSlider();
-    void SetStepPercent(float pct) { stepPercent = (pct <= 0.f) ? 0.05f : pct; }
-    static Color InvertColor(Color color);
+
+    // UPDATED: Added scale parameter for font resizing
+    void DrawSlider(Rectangle bounds, Rectangle clipRegion, float scale);
 
 private:
-    // We use an Enum to know which mode we are in
-    enum SliderType { INT_MODE, FLOAT_MODE };
+    enum SliderType { SLIDER_INT, SLIDER_FLOAT };
+
     SliderType type;
-
-    // Pointers to the external variables (Only one of these will be used at a time)
-    int* intValPtr = nullptr;
-    float* floatValPtr = nullptr;
-
-    // Limits
-    int minInt, maxInt;
-    float minFloat, maxFloat;
-
-    // Common data
+    void* targetRef;
+    float minVal;
+    float maxVal;
+    float defaultVal;
     const char* label;
-    float& hueShiftRef;
-    Rectangle sliderArea{};
-    float stepPercent = 0.05f;
+    float& hueRef;
+    bool isDragging;
+
+    // --- NEW: Text Input State ---
+    bool isEditing;       // Are we currently typing a number?
+    char textBuffer[32];  // Buffer for the text being typed
+    int cursorBlinkFrame; // To make the cursor blink
+
+    float GetNormalizedValue() const;
+    void SetValueFromNormalized(float t);
+
+    // Helper to validate and apply the typed text
+    void ApplyTextBuffer();
 };
 
-#endif // SLIDERCONTROL_H
+#endif

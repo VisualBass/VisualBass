@@ -4,16 +4,19 @@
 #include <stdlib.h>   // For rand() and srand()
 #include <math.h>     // For mathematical functions like powf
 
-// Constants for orb behavior
-#define GRAVITY_RAMP        18.0f
+// Constants for orb behavior (Non-editable for now)
 #define CENTER_SUCK_RADIUS  40.0f
 #define MOUSE_REPEL_RADIUS  250.0f
-#define MOUSE_REPEL_FORCE   5.0f
 #define ORB_RESPAWN_MARGIN  40.0f
 #define ORB_GLOW_RAMP       1.0f
-#define ORB_MAX_SIZE        20.0f
 #define ORB_MIN_SIZE        5.0f
-#define ORB_RESPAWN         true // Ensure this is defined
+#define ORB_RESPAWN         true
+
+// --- EDITABLE GLOBAL SETTINGS ---
+// Default values taken from your original defines
+float gravityStrength = 18.0f;
+float orbMaxSize      = 20.0f;
+float mouseRepelForce = 5.0f;
 
 // Global variables (defined here)
 Orb* orbs = nullptr;  // Pointer to an array of orbs
@@ -69,7 +72,8 @@ void UpdateOrbs(float intensity, bool escape_mode, Color orbColor) {
         dir = Vector2Scale(dir, 1.0f / dist); // Normalize the direction
 
         // Apply gravitational pull towards the center
-        float pullStrength = GRAVITY_RAMP * intensity;
+        // REPLACED MACRO WITH VARIABLE: gravityStrength
+        float pullStrength = gravityStrength * intensity;
         orb->pos = Vector2Add(orb->pos, Vector2Scale(dir, pullStrength));
 
         // Mouse repulsion effect
@@ -78,7 +82,8 @@ void UpdateOrbs(float intensity, bool escape_mode, Color orbColor) {
             if (mouseDist < MOUSE_REPEL_RADIUS) {
                 // Calculate the direction from the orb to the mouse
                 Vector2 repelDir = Vector2Subtract(orb->pos, mouse); // Orb should repel away from the mouse
-                float repelStrength = (1.0f - (mouseDist / MOUSE_REPEL_RADIUS)) * MOUSE_REPEL_FORCE;
+                // REPLACED MACRO WITH VARIABLE: mouseRepelForce
+                float repelStrength = (1.0f - (mouseDist / MOUSE_REPEL_RADIUS)) * mouseRepelForce;
                 orb->pos = Vector2Add(orb->pos, Vector2Scale(Vector2Normalize(repelDir), repelStrength));
             }
         }
@@ -90,7 +95,8 @@ void UpdateOrbs(float intensity, bool escape_mode, Color orbColor) {
         }
 
         // Update orb size based on intensity
-        orb->radius = ORB_MIN_SIZE + intensity * ORB_MAX_SIZE;
+        // REPLACED MACRO WITH VARIABLE: orbMaxSize
+        orb->radius = ORB_MIN_SIZE + intensity * orbMaxSize;
         orb->opacity = (int)(intensity * 255);
         orb->color = orbColor;
     }

@@ -1,112 +1,221 @@
 #include "SliderControl.h"
+#include "menu/GetColorFromHue.h" // Ensure this path matches your file structure
 #include <cstdio>
 #include <cmath>
-#include "Menu/GetColorFromHue.h"
+#include <algorithm>
+#include <cstring>
+#include <cstdlib>
 
-// --- CONSTRUCTOR 1: INTEGER (Legacy/Orbs) ---
-SliderControl::SliderControl(int min, int max, int& var, const char* text, float& hue)
-    : type(INT_MODE), intValPtr(&var), minInt(min), maxInt(max),
-      label(text), hueShiftRef(hue)
+SliderControl::SliderControl(int min, int max, int& targetValue, int defaultValue, const char* labelText, float& globalHue)
+    : type(SLIDER_INT), targetRef(&targetValue), minVal((float)min), maxVal((float)max),
+      defaultVal((float)defaultValue), label(labelText), hueRef(globalHue), isDragging(false),
+      isEditing(false), cursorBlinkFrame(0)
 {
+    textBuffer[0] = '\0';
 }
 
-// --- CONSTRUCTOR 2: FLOAT (New/Brightness) ---
-SliderControl::SliderControl(float min, float max, float& var, const char* text, float& hue)
-    : type(FLOAT_MODE), floatValPtr(&var), minFloat(min), maxFloat(max),
-      label(text), hueShiftRef(hue)
+SliderControl::SliderControl(float min, float max, float& targetValue, float defaultValue, const char* labelText, float& globalHue)
+    : type(SLIDER_FLOAT), targetRef(&targetValue), minVal(min), maxVal(max),
+      defaultVal(defaultValue), label(labelText), hueRef(globalHue), isDragging(false),
+      isEditing(false), cursorBlinkFrame(0)
 {
+    textBuffer[0] = '\0';
 }
 
-void SliderControl::DrawSlider(Rectangle startArea) {
-    float width = (startArea.width > 0) ? startArea.width : 200.0f;
-    float height = (startArea.height > 0) ? startArea.height : 20.0f;
-    sliderArea = { startArea.x, startArea.y, width, height };
+float SliderControl::GetNormalizedValue() const {
+    float current = 0.0f;
+    if (type == SLIDER_INT) current = (float)(*(int*)targetRef);
+    else current = *(float*)targetRef;
 
-    // 1. Background
-    DrawRectangleRec(sliderArea, DARKGRAY);
+    if (maxVal == minVal) return 0.0f;
+    return (current - minVal) / (maxVal - minVal);
+}
 
-    // 2. Calculate Progress (0.0 to 1.0)
-    float t = 0.0f;
-    if (type == INT_MODE) {
-        float range = (float)(maxInt - minInt);
-        if (range > 0) t = (*intValPtr - minInt) / range;
+void SliderControl::SetValueFromNormalized(float t) {
+    if (t < 0.0f) t = 0.0f;
+    if (t > 1.0f) t = 1.0f;
+
+    if (type == SLIDER_INT) {
+        int range = (int)(maxVal - minVal);
+        *(int*)targetRef = (int)(minVal) + (int)std::round(t * range);
     } else {
-        float range = maxFloat - minFloat;
-        if (range > 0) t = (*floatValPtr - minFloat) / range;
+        float range = maxVal - minVal;
+        *(float*)targetRef = minVal + (t * range);
     }
+}
 
-    // 3. Draw Progress Bar
-    float progressWidth = t * sliderArea.width;
-    Rectangle progressBox = { sliderArea.x, sliderArea.y, progressWidth, sliderArea.height };
-    Color baseColor = GetColorFromHue((int)hueShiftRef);
+void SliderControl::ApplyTextBuffer() {
+    if (strlen(textBuffer) == 0) return;
 
-    Vector2 mousePos = GetMousePosition();
-    bool isHovering = CheckCollisionPointRec(mousePos, sliderArea);
-    Color fillColor = isHovering ? InvertColor(baseColor) : baseColor;
+    float val = (float)atof(textBuffer);
 
-    DrawRectangleRec(progressBox, fillColor);
+    // Clamp value to limits
+    if (val < minVal) val = minVal;
+    if (val > maxVal) val = maxVal;
 
-    // 4. Handle Line
-    float handleX = sliderArea.x + progressWidth;
-    // Clamp handle
-    if (handleX > sliderArea.x + sliderArea.width - 1) handleX = sliderArea.x + sliderArea.width - 1;
-    DrawLine((int)handleX, (int)sliderArea.y, (int)handleX, (int)(sliderArea.y + sliderArea.height), WHITE);
-
-    // 5. Label
-    char text[64];
-    Color labelColor = isHovering ? baseColor : fillColor;
-
-    if (type == INT_MODE) {
-        std::snprintf(text, sizeof(text), "%s: %d", label, *intValPtr);
+    // Apply to target
+    if (type == SLIDER_INT) {
+        *(int*)targetRef = (int)std::round(val);
     } else {
-        // For floats, we display 2 decimal places (e.g., "Floor: 0.50")
-        // Or if you prefer percentage: "Floor: %.0f%%", *floatValPtr * 100
-        std::snprintf(text, sizeof(text), "%s: %.2f", label, *floatValPtr);
+        *(float*)targetRef = val;
     }
-
-    // Draw text above slider
-    int textWidth = MeasureText(text, 20);
-    int centerX = (int)(sliderArea.x + (sliderArea.width - textWidth) * 0.5f);
-    DrawText(text, centerX, (int)(sliderArea.y - 25), 20, labelColor);
 }
 
 void SliderControl::UpdateSlider() {
-    Vector2 mousePos = GetMousePosition();
-    bool over = CheckCollisionPointRec(mousePos, sliderArea);
-
-    // --- MOUSE WHEEL ---
-    float wheel = GetMouseWheelMove();
-    if (over && wheel != 0.0f) {
-        if (type == INT_MODE) {
-            float range = (float)(maxInt - minInt);
-            int delta = (int)std::round(range * stepPercent * wheel);
-            if (delta == 0) delta = (wheel > 0) ? 1 : -1;
-            *intValPtr += delta;
-            if (*intValPtr < minInt) *intValPtr = minInt;
-            if (*intValPtr > maxInt) *intValPtr = maxInt;
-        } else {
-            float range = maxFloat - minFloat;
-            // Float precision step
-            *floatValPtr += (range * stepPercent * wheel);
-            if (*floatValPtr < minFloat) *floatValPtr = minFloat;
-            if (*floatValPtr > maxFloat) *floatValPtr = maxFloat;
-        }
-    }
-
-    // --- CLICK DRAG ---
-    if (IsMouseButtonDown(MOUSE_LEFT_BUTTON) && over && sliderArea.width > 0.f) {
-        float t = (mousePos.x - sliderArea.x) / sliderArea.width;
-        if (t < 0.f) t = 0.f;
-        if (t > 1.f) t = 1.f;
-
-        if (type == INT_MODE) {
-            *intValPtr = minInt + (int)std::round(t * (float)(maxInt - minInt));
-        } else {
-            *floatValPtr = minFloat + (t * (maxFloat - minFloat));
-        }
-    }
+    // Logic handled in DrawSlider
 }
 
-Color SliderControl::InvertColor(Color color) {
-    return (Color){ (unsigned char)(255 - color.r), (unsigned char)(255 - color.g), (unsigned char)(255 - color.b), color.a };
+// UPDATED: Now uses scale for fonts and lines
+void SliderControl::DrawSlider(Rectangle bounds, Rectangle clipRegion, float scale) {
+    Vector2 mousePos = GetMousePosition();
+    bool isHover = CheckCollisionPointRec(mousePos, bounds);
+    bool mouseInClip = CheckCollisionPointRec(mousePos, clipRegion);
+
+    // Scaled Font Size
+    int fontSize = (int)(20 * scale);
+
+    // ============================================================
+    // STATE 1: EDITING MODE (Text Input)
+    // ============================================================
+    if (isEditing) {
+        // 1. Handle Key Input
+        int key = GetCharPressed();
+        while (key > 0) {
+            // Allow digits, decimal point, and minus sign
+            if ((key >= '0' && key <= '9') || key == '.' || key == '-') {
+                int len = (int)strlen(textBuffer);
+                if (len < 15) {
+                    textBuffer[len] = (char)key;
+                    textBuffer[len+1] = '\0';
+                }
+            }
+            key = GetCharPressed();
+        }
+
+        // Backspace
+        if (IsKeyPressed(KEY_BACKSPACE)) {
+            int len = (int)strlen(textBuffer);
+            if (len > 0) textBuffer[len - 1] = '\0';
+        }
+
+        // Confirm (Enter) or Cancel (Escape/Click Outside)
+        bool confirm = IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_KP_ENTER);
+        bool cancel = IsKeyPressed(KEY_ESCAPE) || (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && !isHover);
+
+        if (confirm) {
+            ApplyTextBuffer();
+            isEditing = false;
+        } else if (cancel) {
+            isEditing = false;
+        }
+
+        // 2. Render Edit Box (High Contrast)
+        DrawRectangleRec(bounds, WHITE);
+        DrawRectangleLinesEx(bounds, 2 * scale, GetColorFromHue((int)hueRef));
+
+        // Blinking Cursor logic
+        cursorBlinkFrame++;
+        bool showCursor = (cursorBlinkFrame / 30) % 2 == 0;
+
+        const char* displayStr = (showCursor) ? TextFormat("%s_", textBuffer) : textBuffer;
+
+        int textWidth = MeasureText(textBuffer, fontSize); // Measure sans cursor for centering
+        int textX = (int)(bounds.x + (bounds.width - textWidth) / 2.0f);
+        int textY = (int)(bounds.y + (bounds.height - fontSize) / 2.0f);
+
+        DrawText(displayStr, textX, textY, fontSize, BLACK);
+        return; // Return early, don't draw the slider bar
+    }
+
+    // ============================================================
+    // STATE 2: SLIDER MODE (Standard Interaction)
+    // ============================================================
+
+    // Shift + Click to enter Edit Mode
+    if (mouseInClip && isHover && IsKeyDown(KEY_LEFT_SHIFT) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        isEditing = true;
+        isDragging = false;
+        cursorBlinkFrame = 0;
+
+        // Load current value into buffer so user sees what they are editing
+        if (type == SLIDER_INT) sprintf(textBuffer, "%d", *(int*)targetRef);
+        else sprintf(textBuffer, "%.2f", *(float*)targetRef);
+
+        return; // Skip the rest of the frame to prevent double interaction
+    }
+
+    // Right Click Reset
+    if (mouseInClip && isHover && IsMouseButtonPressed(MOUSE_RIGHT_BUTTON)) {
+        if (type == SLIDER_INT) *(int*)targetRef = (int)defaultVal;
+        else *(float*)targetRef = defaultVal;
+        isDragging = false;
+    }
+
+    // Left Click Drag
+    if (mouseInClip && isHover && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        isDragging = true;
+    }
+    if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+        isDragging = false;
+    }
+
+    // Update Value while Dragging
+    if (isDragging) {
+        float mouseXRel = mousePos.x - bounds.x;
+        float t = mouseXRel / bounds.width;
+        SetValueFromNormalized(t);
+    }
+    else if (mouseInClip && isHover) {
+        // Mouse Wheel
+        float wheel = GetMouseWheelMove();
+        if (wheel != 0) {
+            float t = GetNormalizedValue();
+            SetValueFromNormalized(t + (wheel * 0.05f));
+        }
+    }
+
+    // --- RENDER SLIDER ---
+    bool active = (isHover && mouseInClip) || isDragging;
+    Color currentHueColor = GetColorFromHue((int)hueRef);
+    Color fillColor = active ? BLACK : currentHueColor;
+    Color textBaseColor = active ? currentHueColor : WHITE;
+    Color textFillColor = active ? currentHueColor : BLACK;
+
+    DrawRectangleRec(bounds, Fade(DARKGRAY, 0.6f));
+
+    float t = GetNormalizedValue();
+    float fillWidth = bounds.width * t;
+    Rectangle fillRect = { bounds.x, bounds.y, fillWidth, bounds.height };
+    DrawRectangleRec(fillRect, Fade(fillColor, 0.9f));
+
+    char valText[32];
+    if (type == SLIDER_INT) std::sprintf(valText, "%s: %d", label, *(int*)targetRef);
+    else std::sprintf(valText, "%s: %.2f", label, *(float*)targetRef);
+
+    int textWidth = MeasureText(valText, fontSize);
+    int textX = (int)(bounds.x + (bounds.width - textWidth) / 2.0f);
+    int textY = (int)(bounds.y + (bounds.height - fontSize) / 2.0f);
+
+    DrawText(valText, textX, textY, fontSize, textBaseColor);
+
+    if (fillWidth > 1.0f) {
+        float scissorX = fmaxf(fillRect.x, clipRegion.x);
+        float scissorY = fmaxf(fillRect.y, clipRegion.y);
+        float scissorRight = fminf(fillRect.x + fillRect.width, clipRegion.x + clipRegion.width);
+        float scissorBottom = fminf(fillRect.y + fillRect.height, clipRegion.y + clipRegion.height);
+
+        float scissorW = scissorRight - scissorX;
+        float scissorH = scissorBottom - scissorY;
+
+        if (scissorW > 0 && scissorH > 0) {
+            BeginScissorMode((int)scissorX, (int)scissorY, (int)scissorW, (int)scissorH);
+            DrawText(valText, textX, textY, fontSize, textFillColor);
+
+            // Restore Parent Scissor
+            BeginScissorMode((int)clipRegion.x, (int)clipRegion.y, (int)clipRegion.width, (int)clipRegion.height);
+        }
+    }
+
+    Color borderColor = active ? currentHueColor : GRAY;
+    DrawRectangleLinesEx(bounds, 1 * scale, borderColor);
 }

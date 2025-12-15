@@ -3,20 +3,19 @@
 
 #include "raylib.h"
 
-// Number of color options for the picker
 #define NUM_COLOR_OPTIONS 24
 
-// Define a ColorPicker class to manage color selection
 class ColorPicker {
 public:
-    ColorPicker(); // Constructor
-    void DrawColorPicker(Rectangle startArea, float& hueShift); // Draw the color picker grid
-    void UpdateColorSelection(float& hueShift); // Handle color selection logic and update hueShift
+    ColorPicker();
+    // UPDATED: Now accepts a scale factor to resize grid elements
+    int DrawColorPicker(Rectangle startArea, float& hueShift, float scale);
+    void UpdateColorSelection(float& hueShift);
 
 private:
-    int hueOptions[NUM_COLOR_OPTIONS]; // Array for the hue options
-    bool isSelectingColor; // Flag for selecting a color
-    float selectedHue; // Selected hue for color picker
+    int hueOptions[NUM_COLOR_OPTIONS];
+    bool isSelectingColor;
+    float selectedHue;
 };
 
-#endif // COLORPICKER_H
+#endif
