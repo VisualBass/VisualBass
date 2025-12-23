@@ -1,7 +1,9 @@
 #ifndef NETWORKING_H
 #define NETWORKING_H
 
-// Function to initialize and send data to Python via UDP
-void SendToPython(float glow, float hue);
+// Ensure two float parameters are declared
+void SendToPython(float brightness, float hue);
+void LaunchLIFX();
+void StopLIFX();
 
-#endif // NETWORKING_H
+#endif

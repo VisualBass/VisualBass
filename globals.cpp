@@ -37,12 +37,18 @@ float hueShift = 0.0f;
 bool autoCycleHue = true;
 int numOrbs = 400;
 
+// --- NEW SETTINGS ---
+bool enableInterpolation = true;
+CubeSettings cubeSettings; // Uses default constructor
+
+float globalPump = 1.0f;
+
 // NEW: Consolidated shared variables
 float hueSpeed = 15.0f;          // Default speed
 float brightnessFloor = 0.0f;    // Default floor
 
 Color orbColor = WHITE;
-const int MAX_PARTICLES = PARTICLES;
+const int MAX_PARTICLES = DEFAULT_MAX_PARTICLES;
 
 const char* MODE_NAMES[] = {
     "Waveform",
@@ -59,59 +65,6 @@ sockaddr_in lifxDestAddr;
 // =========================================================
 // LIFX CONTROLLER LOGIC
 // =========================================================
-
-void LaunchLIFX() {
-    if (hLifxProcess != NULL) return;
-
-    fs::path currentPath = fs::current_path();
-    fs::path relativePath = fs::path("networking") / "lifx" / "lifx_controller.py";
-    fs::path fullScriptPath = currentPath / relativePath;
-
-    if (!fs::exists(fullScriptPath)) {
-        fullScriptPath = currentPath.parent_path() / relativePath;
-    }
-
-    if (!fs::exists(fullScriptPath)) {
-        std::cerr << "[Error] Could not find lifx_controller.py" << std::endl;
-        return;
-    }
-
-    fullScriptPath = fs::absolute(fullScriptPath);
-    std::string scriptDir = fullScriptPath.parent_path().string();
-    std::string scriptPathQuoted = "\"" + fullScriptPath.string() + "\"";
-
-    SHELLEXECUTEINFOA shExInfo = {0};
-    shExInfo.cbSize = sizeof(shExInfo);
-    shExInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
-    shExInfo.hwnd = NULL;
-    shExInfo.lpVerb = "open";
-    shExInfo.lpFile = "cmd.exe";
-
-    std::string params = "/k python " + scriptPathQuoted;
-
-    shExInfo.lpParameters = params.c_str();
-    shExInfo.lpDirectory = scriptDir.c_str();
-    shExInfo.nShow = SW_SHOW;
-    shExInfo.hInstApp = NULL;
-
-    if (ShellExecuteExA(&shExInfo)) {
-        hLifxProcess = (void*)shExInfo.hProcess;
-        std::cout << "[System] LIFX Controller Launched." << std::endl;
-    }
-}
-
-void StopLIFX() {
-    if (hLifxProcess != NULL) {
-        TerminateProcess((HANDLE)hLifxProcess, 0);
-        CloseHandle((HANDLE)hLifxProcess);
-        hLifxProcess = NULL;
-        std::cout << "[System] LIFX Controller Stopped." << std::endl;
-    }
-    if (lifxSocket != INVALID_SOCKET) {
-        closesocket(lifxSocket);
-        lifxSocket = INVALID_SOCKET;
-    }
-}
 
 void InitLIFXSocket() {
     if (lifxSocket != INVALID_SOCKET) return;

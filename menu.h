@@ -6,8 +6,6 @@
 #include <cstdio>
 #include "menu/ColorPicker.h"
 #include "SliderControl.h"
-
-// Include the new Debug Menu
 #include "menu/Debug.h"
 
 class Menu {
@@ -17,8 +15,6 @@ public:
     bool IsVisible() const;
     Rectangle GetMenuBounds();
     Vector2 GetLocalMousePos();
-
-    // UPDATED: Now takes the visible area for passing to sliders
     float DrawMenuContent(float offsetX, float offsetY, Rectangle visibleArea, int currentMode, float uiScale);
 
     void UpdateTextInput();
@@ -39,11 +35,14 @@ private:
     SliderControl sizeSlider;
     SliderControl repelSlider;
 
-    // NEW: Hue Speed Slider
-    // FIX: Removed 'float hueSpeed;' member variable so it uses the global one!
-    SliderControl hueSpeedSlider;
+    // Cube Sliders
+    SliderControl cubeSpeedSlider;
+    SliderControl cubePumpSlider;
 
-    // Debug Section
+    // Global Sliders
+    SliderControl hueSpeedSlider;
+    SliderControl globalPumpSlider;
+
     DebugMenu debugMenu;
 
     bool lifxConnected;

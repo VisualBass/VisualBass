@@ -7,10 +7,10 @@
 struct Particle {
     Vector3 position;
     Vector3 velocity;
-    Color color;
     float life;
     float size;
     float intensity;
+    Color color;
 };
 
 class Particle01 {
@@ -18,25 +18,21 @@ public:
     Particle01(int maxParticles);
     ~Particle01();
 
-    // --- NEW: CONTROL VARIABLES ---
-    // These behave like settings you can change from main.cpp
-    float minSpawn = 0.0f;
-    float maxSpawn = 10.0f;
-    float spawnMultiplier = 1.0f;     // Moved here too
-    float forceSensitivity = 1.5f;    // Moved here too
-
-    // --- SIMPLIFIED UPDATE ---
-    // We removed the 4 arguments (multiplier, sensitivity, min, max)
-    // because they are now part of the class above!
+    void Init();
     void Update(float deltaTime, float glowValue, Color orbColor);
-
-    void Draw();
+    void Draw(Camera3D camera);
 
 private:
-    int maxParticles;
-    std::vector<Particle> particles;
+    void Spawn3DParticle(Color baseColor, float glowValue);
 
-    void Spawn3DParticle(Color color, float glowValue);
+    std::vector<Particle> particles;
+    int maxParticles;
+    Texture2D spriteTex;
+    bool isInitialized = false;
+
+    float minSpawn = 1.0f;
+    float maxSpawn = 15.0f;
+    float spawnMultiplier = 2.0f;
 };
 
 #endif

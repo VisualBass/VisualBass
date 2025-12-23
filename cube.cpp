@@ -1,74 +1,61 @@
 #include "cube.h"
 #include "raymath.h"
+#include "rlgl.h"
 #include <cmath>
 
-// Constructor
-Cube::Cube(Vector3 pos, float size, Color color, float rotationSpeed)
-    : position(pos),
-      size(size),
-      baseSize(size),
-      color(color),
-      rotation(0.0f),
-      rotationSpeed(rotationSpeed)
+Cube::Cube(int x, int y, int z)
+    : gridIndex(Vector3{ (float)x, (float)y, (float)z }),
+      currentPosition(Vector3Zero()),
+      currentSize(1.0f),
+      currentRotationAngle(0.0f),
+      color(WHITE)
 {
 }
 
-void Cube::Update(float deltaTime, float glow, float hue) {
-    rotation += rotationSpeed * deltaTime;
+void Cube::Update(float totalTime, float glow, float hue, const CubeSettings& settings)
+{
+    float baseSize = 1.0f;
 
-    // Resize based on glow (bass intensity)
-    size = baseSize + glow * 1.00f;
+    float offX = (settings.gridX - 1) * 0.5f;
+    float offY = (settings.gridY - 1) * 0.5f;
+    float offZ = (settings.gridZ - 1) * 0.5f;
 
-    // Rotate position around center (Y-axis)
-    float angle = deltaTime * rotationSpeed;
-    float cosA = cosf(angle);
-    float sinA = sinf(angle);
+    // OLD PUMP LOGIC: Spacing is a direct multiplier of intensity and glow
+    float currentSpacing = 1.0f + (glow * settings.spacingIntensity);
 
-    float x = position.x;
-    float z = position.z;
+    float lx = (gridIndex.x - offX) * currentSpacing;
+    float ly = (gridIndex.y - offY) * currentSpacing;
+    float lz = (gridIndex.z - offZ) * currentSpacing;
 
-    // Rotate around Y axis (XZ plane)
-    position.x = x * cosA - z * sinA;
-    position.z = x * sinA + z * cosA;
+    Vector3 localPos = { lx, ly, lz };
 
-    // Update color based on hue
-    float s = 1.0f, v = 1.0f;
-    float h = hue;
-    float r, g, b;
-    int i = int(h * 6);
-    float f = h * 6 - i;
-    float p = v * (1 - s);
-    float q = v * (1 - f * s);
-    float t = v * (1 - (1 - f) * s);
-    switch (i % 6) {
-        case 0: r = v; g = t; b = p; break;
-        case 1: r = q; g = v; b = p; break;
-        case 2: r = p; g = v; b = t; break;
-        case 3: r = p; g = q; b = v; break;
-        case 4: r = t; g = p; b = v; break;
-        case 5: r = v; g = p; b = q; break;
-    }
-    color = Color{ (unsigned char)(r * 255), (unsigned char)(g * 255), (unsigned char)(b * 255), 255 };
+    float swivelAngleRad = sinf(totalTime * settings.swivelSpeed) * (PI / 4.0f);
+    currentRotationAngle = swivelAngleRad * RAD2DEG;
+
+    currentPosition = Vector3RotateByAxisAngle(localPos, Vector3{ 0.0f, 1.0f, 0.0f }, swivelAngleRad);
+
+    color = ColorFromHSV(hue * 360.0f, 0.8f, 0.9f);
+    currentSize = baseSize;
 }
 
-// Draw cube
 void Cube::Draw() const {
-    DrawCube(position, size, size, size, color);
-    DrawCubeWires(position, size, size, size, Fade(WHITE, 0.4f));
+    rlPushMatrix();
+        rlTranslatef(currentPosition.x, currentPosition.y, currentPosition.z);
+        rlRotatef(currentRotationAngle, 0.0f, 1.0f, 0.0f);
+        DrawCube(Vector3Zero(), currentSize, currentSize, currentSize, color);
+        DrawCubeWires(Vector3Zero(), currentSize, currentSize, currentSize, Fade(BLACK, 0.5f));
+    rlPopMatrix();
 }
 
-// Generate a field of cubes
-std::vector<Cube> GenerateCubeField(int gridRadius, float spacing) {
-    std::vector<Cube> cubeField;
-    for (int x = -gridRadius; x <= gridRadius; ++x) {
-        for (int z = -gridRadius; z <= gridRadius; ++z) {
-            cubeField.emplace_back(
-                Vector3{ x * spacing, 1.0f, z * spacing },
-                1.0f,
-                WHITE,
-                1.0f
-            );
+std::vector<Cube> GenerateCubeField(const CubeSettings& settings) {
+    std::vector<Cube> field;
+    field.reserve(settings.gridX * settings.gridY * settings.gridZ);
+    for (int y = 0; y < settings.gridY; ++y) {
+        for (int z = 0; z < settings.gridZ; ++z) {
+            for (int x = 0; x < settings.gridX; ++x) {
+                field.emplace_back(x, y, z);
+            }
         }
     }
-    return cubeField;
+    return field;
 }

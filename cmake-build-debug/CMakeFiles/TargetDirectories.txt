@@ -1,0 +1,14 @@
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/CMakeFiles/VisualBassSync.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/CMakeFiles/edit_cache.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/CMakeFiles/list_install_components.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/CMakeFiles/install.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/CMakeFiles/install/local.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/CMakeFiles/install/strip.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/kissfft/CMakeFiles/kissfft.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/kissfft/CMakeFiles/edit_cache.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/kissfft/CMakeFiles/rebuild_cache.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/kissfft/CMakeFiles/list_install_components.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/kissfft/CMakeFiles/install.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/kissfft/CMakeFiles/install/local.dir
+N:/Visual Bass Sync CLION PROJECT/VBS 0.4.2 12-15-2025/cmake-build-debug/kissfft/CMakeFiles/install/strip.dir
